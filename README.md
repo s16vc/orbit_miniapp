@@ -1,15 +1,13 @@
 <p align="center">
   <br>
-  <img width="240" src="./src/assets/tapps.png" alt="logo of telegram web apps">
+  <img width="240" src="https://assets.softr-files.com/applications/829fb273-5b85-4f9d-aa78-14c7ce3850d9/assets/4da9c6fb-2f78-4f27-9de9-8eb2b50e343a.png" alt="logo of telegram web apps">
   <br>
   <br>
 </p>
 
-# Telegram Mini Apps(TMA) + React + TypeScript + Vite
+# Orbit Miniapp
 
-Vite (which means "fast" in French) is a front-end build tool and development server that aims to provide a faster and leaner development experience for modern web projects. We will utilise Vite to create Telegram Mini App example.
-
-This template provides a minimal setup to get TMA working in Vite with React, TypeScript, HMR and some ESLint rules.
+Basic orbit miniapp to try out miniapps inside s16vc.
 
 ## Usage
 
