@@ -1,32 +1,44 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import twaLogo from './assets/tapps.png'
 import viteLogo from '/vite.svg'
+import axios from 'axios'; // Import Axios
 import './App.css'
 
 import WebApp from '@twa-dev/sdk'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const [data, setData] = useState(null);
+  const stages = ["fat", "thin", "thick", "ohhh"]
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('https://eothw9cyg1yy2we.m.pipedream.net');
+        setData(response.data);
+        console.log(data)
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []); // Empty dependency array ensures this effect runs only once, similar to componentDidMount
 
   return (
     <>
       <div>
         <a href="https://ton.org/dev" target="_blank">
-          <img src={twaLogo} className="logo" alt="TWA logo" />
-        </a>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
+          <img src='./src/assets/orbit-logo.jpg' className="logo" alt="TWA logo" />
         </a>
       </div>
-      <h1>TWA + Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+      <h1>Orbit app</h1>
+      <h2>Deal stages</h2>
+      <div className='deal-stage-menu'>
+        {stages.map((stage) => (
+          <button className='btn-menu' onClick={() => console.log(stage)}>{stage}</button>
+        ))}
       </div>
       {/*  */}
       <div className="card">
