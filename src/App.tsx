@@ -1,14 +1,11 @@
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import twaLogo from './assets/tapps.png'
-import viteLogo from '/vite.svg'
 import axios from 'axios'; // Import Axios
 import './App.css'
 
 import WebApp from '@twa-dev/sdk'
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [count, _] = useState(0);
   const [data, setData] = useState(null);
   const stages = ["fat", "thin", "thick", "ohhh"]
 
