@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import orbitLogo from './assets/orbit-logo.jpg'
 import axios from 'axios'; // Import Axios
 import { Comment } from 'react-loader-spinner'
