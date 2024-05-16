@@ -23,6 +23,21 @@
   flex-direction: column;
 }
 
+.result-cards {
+  display: flex;
+}
+
+.deal {
+  border: 1px solid blue;
+  border-radius: 10px;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.deal:hover {
+  background: yellow;
+}
+
 .btn-menu {
   margin-top: 10px;
 }
