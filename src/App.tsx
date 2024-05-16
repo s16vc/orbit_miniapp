@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import orbitLogo from './assets/orbit-logo.jpg'
 import axios from 'axios'; // Import Axios
 import './App.css'
 
@@ -26,8 +27,8 @@ function App() {
   return (
     <>
       <div>
-        <a href="https://ton.org/dev" target="_blank">
-          <img src='./src/assets/orbit-logo.jpg' className="logo" alt="TWA logo" />
+        <a href="https://www.s16vc.com" target="_blank">
+          <img src={orbitLogo} className="logo" alt="TWA logo" />
         </a>
       </div>
       <h1>Orbit app</h1>
