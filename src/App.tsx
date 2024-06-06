@@ -45,7 +45,6 @@ function App() {
             <InfinitySpin
             width="200"
             color="white"
-            ariaLabel="infinity-spin-loading"
             />
           </div>
           
