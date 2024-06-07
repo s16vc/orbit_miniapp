@@ -16,7 +16,7 @@ function App() {
     const fetchData = async () => {
       setLoading(true)
       try {
-        const response = await axios.get('https://eobimedzlf09afj.m.pipedream.net');
+        const response = await axios.get('https://eo1qd7ilkf93z2i.m.pipedream.net');
         const preloadData = response.data;
         console.log(preloadData);
         setData(preloadData)
