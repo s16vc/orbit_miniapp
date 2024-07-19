@@ -8,11 +8,11 @@ import { InfinitySpin } from 'react-loader-spinner';
 
 interface DataDict { [key: string]: any[] };
 
-async function handleClick(event: any, data: any) {
+async function handleClick(event: any, clickData: any) {
   console.log("Yoooo")
   event.preventDefault();
   const response = await axios.post('https://eo5ut1vnrxtjmq0.m.pipedream.net', {
-    data: data
+    clickData: clickData
   });
   console.log(response);
   // window.location.href = deal.url;
@@ -21,6 +21,7 @@ async function handleClick(event: any, data: any) {
 function App(props: any) {
   const [data, setData] = useState<DataDict>({});
   const [loading, setLoading] = useState(false);
+  const user = props.data;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,6 +51,9 @@ function App(props: any) {
           <a href="https://www.s16vc.com" target="_blank">
             <img src={s16vcLogo} className="logo" alt="TWA logo" />
           </a>
+          {
+            Object.keys(user).length > 0 && <h1>Welcome {user.first_name}</h1>
+          }
         </div>
         {loading ? (
           <div className='loading-animation'>
@@ -68,7 +72,7 @@ function App(props: any) {
                 <div className='stage-card'>
                   {data[stage].map((deal, index) => (
                     <>
-                      <a key={index} href={deal.url} className='deal-entry' onClick={(event) => handleClick(event, props.data)}>{deal.name}</a>
+                      <a key={index} href={deal.url} className='deal-entry' onClick={(event) => handleClick(event, {deal: deal, user: user})}>{deal.name}</a>
                       {index < data[stage].length-1 && (<hr className="solid"></hr>)}
                     </>
                   ))}
