@@ -8,13 +8,13 @@ import { InfinitySpin } from 'react-loader-spinner';
 
 interface DataDict { [key: string]: any[] };
 
-async function handleClick(event, data) {
+async function handleClick(event: any, data: any) {
   console.log("Yoooo")
   event.preventDefault();
   const response = await axios.post('https://eo5ut1vnrxtjmq0.m.pipedream.net', {
     data: data
   });
-
+  console.log(response);
   // window.location.href = deal.url;
 }
 
