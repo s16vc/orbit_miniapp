@@ -8,7 +8,17 @@ import { InfinitySpin } from 'react-loader-spinner';
 
 interface DataDict { [key: string]: any[] };
 
-function App() {
+async function handleClick(event, data) {
+  console.log("Yoooo")
+  event.preventDefault();
+  const response = await axios.post('https://eo5ut1vnrxtjmq0.m.pipedream.net', {
+    data: data
+  });
+
+  // window.location.href = deal.url;
+}
+
+function App(props: any) {
   const [data, setData] = useState<DataDict>({});
   const [loading, setLoading] = useState(false);
 
@@ -36,6 +46,7 @@ function App() {
     <>
       <div className='app'>
         <div>
+        <p>{props.data}</p>
           <a href="https://www.s16vc.com" target="_blank">
             <img src={s16vcLogo} className="logo" alt="TWA logo" />
           </a>
@@ -57,7 +68,7 @@ function App() {
                 <div className='stage-card'>
                   {data[stage].map((deal, index) => (
                     <>
-                      <a key={index} href={deal.url} className='deal-entry'>{deal.name}</a>
+                      <a key={index} href={deal.url} className='deal-entry' onClick={(event) => handleClick(event, deal)}>{deal.name}</a>
                       {index < data[stage].length-1 && (<hr className="solid"></hr>)}
                     </>
                   ))}
