@@ -71,7 +71,7 @@ function App(props: any) {
                 <div className='stage-card'>
                   {data[stage].map((deal, index) => (
                     <>
-                      <a key={index} href={deal.url} className='deal-entry' onClick={(event) => handleClick(event, {deal: deal, user: user})}>{deal.name}</a>
+                      <a key={index} href={deal.url} className='deal-entry' onClick={(event) => handleClick(event, {deal: deal, user: user, timestamp: new Date().getTime()})}>{deal.name}</a>
                       {index < data[stage].length-1 && (<hr className="solid"></hr>)}
                     </>
                   ))}
