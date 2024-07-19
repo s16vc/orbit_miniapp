@@ -7,10 +7,10 @@ import WebApp from '@twa-dev/sdk'
 
 WebApp.ready();
 
-console.log(WebApp.initData)
+console.log(WebApp.initDataUnsafe);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App data={WebApp.initData}/>
+    <App data={WebApp.initDataUnsafe}/>
   </React.StrictMode>,
 )
