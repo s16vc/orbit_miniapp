@@ -46,7 +46,7 @@ function App(props: any) {
     <>
       <div className='app'>
         <div>
-        <p>{props.data}</p>
+        <p>{JSON.stringify(props.data)}</p>
           <a href="https://www.s16vc.com" target="_blank">
             <img src={s16vcLogo} className="logo" alt="TWA logo" />
           </a>
