@@ -52,7 +52,7 @@ function App(props: any) {
             <img src={s16vcLogo} className="logo" alt="TWA logo" />
           </a>
           {
-            Object.keys(user).length > 0 && <h1>Welcome {user.first_name}</h1>
+            (user !== null && user !== undefined) && <h1>Welcome {user.first_name}</h1>
           }
         </div>
         {loading ? (
