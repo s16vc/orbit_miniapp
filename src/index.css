@@ -59,6 +59,10 @@
   height: 100%;
 }
 
+.greeting {
+  margin-bottom: 5px;
+}
+
 .result-cards {
   display: flex;
   flex-wrap: wrap;
