@@ -21,7 +21,7 @@ async function handleClick(event: any, clickData: any) {
 function App(props: any) {
   const [data, setData] = useState<DataDict>({});
   const [loading, setLoading] = useState(false);
-  const user = props.data;
+  const user = props.data.user;
 
   useEffect(() => {
     const fetchData = async () => {
