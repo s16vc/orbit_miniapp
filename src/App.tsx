@@ -15,7 +15,7 @@ async function handleClick(event: any, clickData: any) {
     eventData: clickData
   });
   console.log(response);
-  // window.location.href = deal.url;
+  window.location.href = clickData.deal.url;
 }
 
 async function handleOpen(openData: any) {
@@ -24,7 +24,6 @@ async function handleOpen(openData: any) {
     eventData: openData
   });
   console.log(response);
-  window.location.href = deal.url;
 }
 
 function App(props: any) {
