@@ -33,11 +33,13 @@ function App(props: any) {
   const [data, setData] = useState<DataDict>({});
   const [loading, setLoading] = useState(false);
   const user = props.data.user;
+  const formattedDate = (new Date).toISOString().slice(0, 19).replace('T', ' ');
 
+  console.log(formattedDate)
   useEffect(() => {
     const fetchData = async () => {
       await handleOpen({
-        timestamp: Date.now(),
+        timestamp: formattedDate,
         user: user,
         event: "open"
       })
@@ -87,7 +89,7 @@ function App(props: any) {
                 <div className='stage-card'>
                   {data[stage].map((deal, index) => (
                     <>
-                      <a key={index} href={deal.url} className='deal-entry' onClick={(event) => handleClick(event, {deal: deal, user: user, timestamp: Date.now(), event: "click"})}>{deal.name}{deal.url && <span>🔗</span>}</a>
+                      <a key={index} href={deal.url} className='deal-entry' onClick={(event) => handleClick(event, {deal: deal, user: user, timestamp: formattedDate, event: "click"})}>{deal.name}{deal.url && <span>🔗</span>}</a>
                       {index < data[stage].length-1 && (<hr className="solid"></hr>)}
                     </>
                   ))}
