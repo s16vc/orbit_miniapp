@@ -15,7 +15,10 @@ async function handleClick(event: any, clickData: any) {
     eventData: clickData
   });
   console.log(response);
-  window.location.href = clickData.deal.url;
+  const deal = clickData.deal;
+  if (deal.url) {
+    window.location.href = deal.url;
+  }
 }
 
 async function handleOpen(openData: any) {
@@ -84,7 +87,7 @@ function App(props: any) {
                 <div className='stage-card'>
                   {data[stage].map((deal, index) => (
                     <>
-                      <a key={index} href={deal.url} className='deal-entry' onClick={(event) => handleClick(event, {deal: deal, user: user, timestamp: Date.now(), event: "click"})}>{deal.name}</a>
+                      <a key={index} href={deal.url} className='deal-entry' onClick={(event) => handleClick(event, {deal: deal, user: user, timestamp: Date.now(), event: "click"})}>{deal.name}{deal.url && <span>🔗</span>}</a>
                       {index < data[stage].length-1 && (<hr className="solid"></hr>)}
                     </>
                   ))}
