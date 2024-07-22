@@ -33,7 +33,7 @@ function App(props: any) {
   const [data, setData] = useState<DataDict>({});
   const [loading, setLoading] = useState(false);
   const user = props.data.user;
-  const formattedDate = (new Date).toISOString().slice(0, 19).replace('T', ' ');
+  const formattedDate = (new Date).toISOString().slice(0, 19).replace('T', ' ').toString();
 
   console.log(formattedDate)
   useEffect(() => {
