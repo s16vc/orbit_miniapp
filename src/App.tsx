@@ -3,30 +3,31 @@ import s16vcLogo from './assets/s16vc.png'
 import axios from 'axios'; // Import Axios
 import './App.css'
 import { InfinitySpin } from 'react-loader-spinner';
-
-
+import { usePostHog } from 'posthog-js/react'
 
 interface DataDict { [key: string]: any[] };
 
-async function handleClick(event: any, clickData: any) {
+async function handleClick(event: any, clickData: any, posthog: any) {
   console.log("Yoooo")
   event.preventDefault();
-  const response = await axios.post('https://eo5ut1vnrxtjmq0.m.pipedream.net', {
-    eventData: clickData
-  });
-  console.log(response);
+  // const response = await axios.post('https://eo5ut1vnrxtjmq0.m.pipedream.net', {
+  //   eventData: clickData
+  // });
+  // console.log(response);
+  posthog?.capture('click', { property: clickData })
   const deal = clickData.deal;
   if (deal.url) {
     window.location.href = deal.url;
   }
+  
 }
 
-async function handleOpen(openData: any) {
+async function handleOpen(openData: any, posthog: any) {
   console.log("app opened")
-  const response = await axios.post('https://eo5ut1vnrxtjmq0.m.pipedream.net', {
-    eventData: openData
-  });
-  console.log(response);
+  // const response = await axios.post('https://eo5ut1vnrxtjmq0.m.pipedream.net', {
+  //   eventData: openData
+  // });
+  posthog?.capture('open', { property: openData })
 }
 
 function App(props: any) {
@@ -35,14 +36,17 @@ function App(props: any) {
   const user = props.data.user;
   const formattedDate = (new Date).toISOString().slice(0, 19).replace('T', ' ').toString();
 
+  const posthog = usePostHog();
+
   console.log(formattedDate)
   useEffect(() => {
+    console.log(posthog)
     const fetchData = async () => {
       await handleOpen({
         timestamp: formattedDate,
         user: user,
         event: "open"
-      })
+      }, posthog)
       setLoading(true)
       try {
         const response = await axios.get('https://eo1qd7ilkf93z2i.m.pipedream.net');
@@ -89,7 +93,7 @@ function App(props: any) {
                 <div className='stage-card'>
                   {data[stage].map((deal, index) => (
                     <>
-                      <a key={index} href={deal.url} className='deal-entry' onClick={(event) => handleClick(event, {deal: deal, user: user, timestamp: formattedDate, event: "click"})}>{deal.name}{deal.url && <span>🔗</span>}</a>
+                      <a key={index} href={deal.url} className='deal-entry' onClick={(event) => handleClick(event, {deal: deal, user: user, timestamp: formattedDate, event: "click"}, posthog)}>{deal.name}{deal.url && <span>🔗</span>}</a>
                       {index < data[stage].length-1 && (<hr className="solid"></hr>)}
                     </>
                   ))}
