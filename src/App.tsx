@@ -19,7 +19,6 @@ async function handleClick(event: any, clickData: any, posthog: any) {
   if (deal.url) {
     window.location.href = deal.url;
   }
-  
 }
 
 async function handleOpen(openData: any, posthog: any) {
