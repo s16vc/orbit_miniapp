@@ -74,8 +74,9 @@ function App(props: any) {
           <a href="https://www.s16vc.com" target="_blank">
             <img src={s16vcLogo} className="logo" alt="TWA logo" />
           </a>
-          <h1 className={`greeting ${loading ? 'visible': 'hidden'}`}>Welcome, {}!</h1>
-          {/* (user !== null && user !== undefined) */}
+          {
+            (user !== undefined && user !== null) && <h1 className={`greeting ${loading ? 'visible': 'hidden'}`}>Welcome, {user.first_name}!</h1>
+          }
         </div>
         {loading ? (
           <div className='loading-animation'>
