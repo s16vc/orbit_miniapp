@@ -36,11 +36,10 @@ function App(props: any) {
   const formattedDate = (new Date).toISOString().slice(0, 19).replace('T', ' ').toString();
 
   const posthog = usePostHog();
-  posthog.identify(`${user.first_name} ${user.last_name}`)
 
   console.log(formattedDate)
   useEffect(() => {
-    console.log(posthog)
+    posthog.identify(`${user.first_name} ${user.last_name}`);
     const fetchData = async () => {
       await handleOpen({
         timestamp: formattedDate,
