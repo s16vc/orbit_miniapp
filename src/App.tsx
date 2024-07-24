@@ -39,7 +39,10 @@ function App(props: any) {
 
   console.log(formattedDate)
   useEffect(() => {
-    posthog.identify(`${user.first_name} ${user.last_name}`);
+    if (user) {
+      posthog?.identify(`${user.first_name} ${user.last_name}`);
+    }
+    
     const fetchData = async () => {
       await handleOpen({
         timestamp: formattedDate,
@@ -67,13 +70,12 @@ function App(props: any) {
   return (
     <>
       <div className='app'>
-        <div>
+        <div className='app-header'>
           <a href="https://www.s16vc.com" target="_blank">
             <img src={s16vcLogo} className="logo" alt="TWA logo" />
           </a>
-          {
-            (user !== null && user !== undefined) && <h1 className='greeting'>Welcome {user.first_name}</h1>
-          }
+          <h1 className={`greeting ${loading ? 'visible': 'hidden'}`}>Welcome, {}!</h1>
+          {/* (user !== null && user !== undefined) */}
         </div>
         {loading ? (
           <div className='loading-animation'>
