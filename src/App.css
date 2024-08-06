@@ -5,6 +5,39 @@
   text-align: center;
 }
 
+.deal-page {
+  color: white;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  background: DimGray;
+  height: 100%;
+  justify-content: center;
+}
+
+.scrollable-container {
+  height: 200px; /* Adjust height as needed */
+  overflow-y: auto; /* Adds vertical scrollbar */
+  border: 1px solid #ccc; /* Optional: adds border for visual clarity */
+  padding: 10px; /* Optional: adds padding inside the container */
+}
+
+.actions-desc {
+  line-height: 1.1em;
+  width: 80%;
+}
+
+.btn-actions {
+  display: flex;
+}
+.btn-actions button {
+  margin: 5px;
+  width: 70px;
+}
+
 .logo {
   height: 6em;
   margin-bottom: 10px;

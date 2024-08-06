@@ -4,6 +4,7 @@ import App from './App.tsx'
 import './index.css'
 
 import WebApp from '@twa-dev/sdk'
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import { PostHogProvider} from 'posthog-js/react';
 
@@ -21,7 +22,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       apiKey={import.meta.env.VITE_POSTHOG_KEY}
       options={options}
     >
-      <App data={WebApp.initDataUnsafe}/>
+      <Router>
+        <App data={WebApp.initDataUnsafe}/>
+      </Router>
     </PostHogProvider>
     
   </React.StrictMode>,
