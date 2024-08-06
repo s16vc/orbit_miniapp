@@ -1,6 +1,5 @@
 // DealPage.jsx
-import { useLocation } from 'react-router-dom';
-import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function DealPage() {
   const location = useLocation();

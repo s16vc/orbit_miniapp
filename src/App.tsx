@@ -4,7 +4,7 @@ import axios from 'axios'; // Import Axios
 import './App.css'
 import { InfinitySpin } from 'react-loader-spinner';
 import { usePostHog } from 'posthog-js/react'
-import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Route, Routes, useNavigate } from 'react-router-dom';
 import DealPage from './components/DealPage';
 
 interface DataDict { [key: string]: any[] };
