@@ -4,7 +4,7 @@ import App from './App.tsx'
 import './index.css'
 
 import WebApp from '@twa-dev/sdk'
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import { PostHogProvider} from 'posthog-js/react';
 
@@ -22,9 +22,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       apiKey={import.meta.env.VITE_POSTHOG_KEY}
       options={options}
     >
-      <Router>
+      <BrowserRouter basename={import.meta.env.DEV ? '/' : '/orbit_miniapp/'}>
         <App data={WebApp.initDataUnsafe}/>
-      </Router>
+      </BrowserRouter>
     </PostHogProvider>
     
   </React.StrictMode>,
