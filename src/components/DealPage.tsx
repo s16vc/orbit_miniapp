@@ -1,4 +1,5 @@
 // DealPage.jsx
+import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 function DealPage() {
@@ -12,6 +13,41 @@ function DealPage() {
   async function handleClick() {
     navigate('/');
   }
+
+  async function handleActionClick(event: any, button: any) {
+    console.log("ok")
+    console.log('Button clicked with data:', button);
+    try {
+      const payload = {
+        "callback_query": {
+            "id": "123",
+            "app_event": true,
+            "from": {
+                "username": "ish",
+                "id": "123"
+            },
+            "message": {
+                "message_id": "",
+                "reply_markup": "",
+                "chat": {
+                    "id": "123"
+                }
+            },
+            "data": button.value
+        }
+    }
+      const response = await axios.post('https://eoge8y8hn354lrl.m.pipedream.net', payload);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
+
+  const buttonData = [
+    { id: 1, value: `CommunityRequestInfo_${deal.atid}`, emoji: '🙋‍♂️' },
+    { id: 2, value: `CommunityCanHelp_${deal.atid}`, emoji: 'ℹ️' },
+    { id: 3, value: `CommunityRequestCall_${deal.atid}`, emoji: '☎️' },
+    { id: 4, value: `CommunitySetAlert_${deal.atid}`, emoji: '🔔' }
+  ];
 
   return (
     <div className='deal-page'>
@@ -36,11 +72,15 @@ function DealPage() {
             <p>🔔 - subscribe to updates</p>
           </div>
           <div className='btn-actions'>
-            <button>🙋‍♂️</button>
-            <button>ℹ️</button>
-            <button>☎️</button>
-            <button>🔔</button>
-          </div>
+          {buttonData.map(button => (
+            <button
+              key={button.id}
+              onClick={(event) => handleActionClick(event, button)}
+            >
+              {button.emoji}
+            </button>
+          ))}
+        </div>
           
         </>
       ) : (

@@ -39,6 +39,7 @@ function App(props: any) {
 
   console.log(formattedDate)
   useEffect(() => {
+    console.log(user);
     if (user) {
       posthog?.identify(`${user.first_name} ${user.last_name}`);
     }
