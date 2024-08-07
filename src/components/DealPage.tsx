@@ -5,8 +5,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 function DealPage() {
   const location = useLocation();
   const deal = location.state?.deal; // Access the transferred data
+  const user = location.state?.user; // Access the transferred data
 
-  console.log(deal);
+  console.log(user);
 
   const navigate = useNavigate(); // Use useNavigate hook
 
@@ -15,7 +16,7 @@ function DealPage() {
   }
 
   async function handleActionClick(event: any, button: any) {
-    console.log("ok")
+    console.log(event)
     console.log('Button clicked with data:', button);
     try {
       const payload = {
@@ -23,8 +24,8 @@ function DealPage() {
             "id": "123",
             "app_event": true,
             "from": {
-                "username": "ish",
-                "id": "123"
+                "username": user.username,
+                "id": user.id
             },
             "message": {
                 "message_id": "",
@@ -36,7 +37,7 @@ function DealPage() {
             "data": button.value
         }
     }
-      const response = await axios.post('https://eoge8y8hn354lrl.m.pipedream.net', payload);
+      await axios.post('https://eoge8y8hn354lrl.m.pipedream.net', payload);
     } catch (error) {
       console.error('Error fetching data:', error);
     }

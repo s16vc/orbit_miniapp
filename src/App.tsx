@@ -28,7 +28,7 @@ function App(props: any) {
     //   window.location.href = deal.url;
     // }
     if (deal) {
-      navigate('/deal', { state: { deal } }); // Navigate to the new page with deal data
+      navigate('/deal', { state: { deal, user } }); // Navigate to the new page with deal data
     }
   }
 
