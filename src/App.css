@@ -6,6 +6,7 @@
 }
 
 .deal-page {
+  font-size: 0.85em;
   color: white;
   margin: 20px;
   padding: 10px;
@@ -13,20 +14,24 @@
   text-align: left;
   display: flex;
   flex-direction: column;
-  background: DimGray;
-  height: 100%;
+  background: rgba(100, 100, 100, 0.3);;
+  height: 95vh;
   justify-content: center;
+  line-height: 1.1em;
 }
 
 .scrollable-container {
-  height: 200px; /* Adjust height as needed */
+  margin-top: 10px;
+  background: grey;
+  border-radius: 10px;
+  height: 140px; /* Adjust height as needed */
   overflow-y: auto; /* Adds vertical scrollbar */
   border: 1px solid #ccc; /* Optional: adds border for visual clarity */
   padding: 10px; /* Optional: adds padding inside the container */
 }
 
 .actions-desc {
-  line-height: 1.1em;
+  line-height: 1em;
   width: 80%;
 }
 
@@ -34,8 +39,12 @@
   display: flex;
 }
 .btn-actions button {
-  margin: 5px;
-  width: 70px;
+  margin: 7px;
+  width: 50px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .logo {

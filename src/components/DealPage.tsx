@@ -54,19 +54,32 @@ function DealPage() {
 
   return (
     <div className='deal-page'>
-      <button className='' onClick={handleClick}>Back</button>
+      <button className='' onClick={handleClick}>⬅️ Back</button>
       <h1>Deal Details</h1>
       {deal ? (
         <>
           <div>
+          {deal.name && (
             <p>Company name: <span>{deal.name}</span></p>
+          )}
+
+          {deal.dealSource && (
             <p>Deal Source: <span>{deal.dealSource}</span></p>
+          )}
+
+          {deal.dealCaptain && (
             <p>Deal Captain: <span>{deal.dealCaptain}</span></p>
+          )}
+
+          {deal.website && (
             <p>Website: <span>{deal.website}</span></p>
+          )}
+
+          {deal.aiSummary && (
             <p>AI Summary: <div className='scrollable-container'>{deal.aiSummary}</div></p>
+          )}
           </div>
 
-          <br/>
           <div className='actions-desc'>
             <p>More Actions:</p>
             <p>🙋‍♂️ - ask for the pitch deck</p>
