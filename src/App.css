@@ -6,7 +6,7 @@
 }
 
 .deal-page {
-  font-size: 0.85em;
+  font-size: 0.9em;
   color: white;
   margin: 20px;
   padding: 10px;
@@ -24,9 +24,8 @@
   margin-top: 10px;
   background: grey;
   border-radius: 10px;
-  height: 140px; /* Adjust height as needed */
+  height: 80px; /* Adjust height as needed */
   overflow-y: auto; /* Adds vertical scrollbar */
-  border: 1px solid #ccc; /* Optional: adds border for visual clarity */
   padding: 10px; /* Optional: adds padding inside the container */
 }
 
