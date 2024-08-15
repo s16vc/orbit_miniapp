@@ -62,9 +62,9 @@ function DealPage() {
           {deal.name && (
             <p>Company name: <span>{deal.name}</span></p>
           )}
-
+          {/* {deal.dealSource} */}
           {deal.dealSource && (
-            <p>Deal Source: <span>{deal.dealSource}</span></p>
+            <p>Deal Source: <span>Community</span></p>
           )}
 
           {deal.dealCaptain && (
