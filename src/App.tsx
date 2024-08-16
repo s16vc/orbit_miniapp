@@ -22,12 +22,11 @@ const checkUserMembership = async (userId: any) => {
       const response = await axios.get(url);
       const data = response.data;
 
-      if (data.ok) {
-          const memberStatus = data.result.status;
-          console.log(`User ${userId} is a member of the channel. Status: ${memberStatus}`);
+      if (data.ok && data.result.status === "member") {
+          console.log('User is a member');
           return true;
       } else {
-          console.error('Failed to get chat member information:', data);
+          console.error('Not a member of the channel:', data);
           return false;
       }
   } catch (error: any) {
