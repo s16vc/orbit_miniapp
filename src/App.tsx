@@ -122,7 +122,7 @@ function App(props: any) {
       <Route path="/" element={
          <div className='app'>
          <div className='app-header'>
-          <p>Debug auth: {auth} user_id: {user.id}</p>
+          <p>Debug auth: {auth} user_id: {user.id} env: {process.env.NODE_ENV}</p>
            <a href="https://www.s16vc.com" target="_blank">
              <img src={s16vcLogo} className="logo" alt="TWA logo" />
            </a>
