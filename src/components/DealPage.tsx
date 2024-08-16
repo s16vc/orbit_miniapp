@@ -49,10 +49,10 @@ function DealPage() {
   }
 
   const buttonData = [
-    { id: 1, value: `CommunityRequestInfo_${deal.atid}`, emoji: '🙋‍♂️', message: 'Thank for your offer to help! We have notified the deal captain.'},
-    { id: 2, value: `CommunityCanHelp_${deal.atid}`, emoji: 'ℹ️', message: 'Request received! You will receive the data shortly.' },
-    { id: 3, value: `CommunityRequestCall_${deal.atid}`, emoji: '☎️', message: 'Request received! The deal captain has been notified.'},
-    { id: 4, value: `CommunitySetAlert_${deal.atid}`, emoji: '🔔', message: 'Alert Set. You will receive a message whenever this deal has an update'}
+    { id: 1, value: `CommunityRequestInfo_${deal.atid}`, emoji: '🙋‍♂️', message: 'Thank for your offer to help! We have notified the deal captain.', label: 'Request a deck'},
+    { id: 2, value: `CommunityCanHelp_${deal.atid}`, emoji: 'ℹ️', message: 'Request received! You will receive the data shortly.', label: 'Share info'},
+    { id: 3, value: `CommunityRequestCall_${deal.atid}`, emoji: '☎️', message: 'Request received! The deal captain has been notified.', label: 'Join a call'},
+    { id: 4, value: `CommunitySetAlert_${deal.atid}`, emoji: '🔔', message: 'Alert Set. You will receive a message whenever this deal has an update', label: 'Subscribe'}
   ];
 
   return (
@@ -73,8 +73,10 @@ function DealPage() {
                     onClick={(event) => handleActionClick(event, button)}
                   >
                     <div>
-                    {button.emoji}
+                    <p className='emoji'>{button.emoji}</p>
+                    <p>{button.label}</p>
                     </div>
+                    
                   </button>
                 ))}
               </div>

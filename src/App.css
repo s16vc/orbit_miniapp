@@ -118,6 +118,15 @@
   background: #D9D9D910;
 }
 
+.emoji {
+  font-size: 20px !important;
+}
+
+.btn-actions button p {
+  color: white;
+  font-size: 8px;
+}
+
 .logo {
   height: 6em;
   margin-bottom: 10px;
