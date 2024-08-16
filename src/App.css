@@ -20,6 +20,34 @@
   line-height: 1.1em;
 }
 
+.denied-section {
+  font-size: 2em;
+  color: white;
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: center; /* Vertically center */
+  height: 100vh; /* Make the container full height of the viewport */
+}
+
+.denied-message {
+  font-size: 0.8em;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Center the text inside the .denied-message div */
+  text-align: center; /* Optional: Center the text if it's multiline */
+}
+
+.denied-message span {
+  font-size: 0.5em;
+  color: red;
+}
+
+.back-btn {
+  width: 40px;
+}
+
 .scrollable-container {
   margin-top: 10px;
   background: grey;

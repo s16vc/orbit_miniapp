@@ -54,8 +54,7 @@ function DealPage() {
 
   return (
     <div className='deal-page'>
-      <button className='' onClick={handleClick}>⬅️ Back</button>
-      <h1>Deal Details</h1>
+      <button className='back-btn' onClick={handleClick}>⬅️</button>
       {deal ? (
         <>
           <div>
