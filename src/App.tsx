@@ -30,7 +30,7 @@ const checkUserMembership = async (userId: any) => {
           console.error('Failed to get chat member information:', data);
           return false;
       }
-  } catch (error) {
+  } catch (error: any) {
       console.error('Error making request:', error.message);
       return false;
   }
