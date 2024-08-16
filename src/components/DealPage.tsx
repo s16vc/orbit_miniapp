@@ -2,6 +2,8 @@
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 import WebApp from '@twa-dev/sdk'
+import arrow from '../assets/arrow-left.svg'
+
 
 function DealPage() {
   const location = useLocation();
@@ -9,6 +11,7 @@ function DealPage() {
   const user = location.state?.user; // Access the transferred data
 
   console.log(user);
+  console.log(deal);
 
   const navigate = useNavigate(); // Use useNavigate hook
 
@@ -54,49 +57,58 @@ function DealPage() {
 
   return (
     <div className='deal-page'>
-      <button className='back-btn' onClick={handleClick}>⬅️</button>
+      <img className='back-btn' onClick={handleClick} src={arrow}/>
       {deal ? (
         <>
-          <div>
-          {deal.name && (
-            <p>Company name: <span>{deal.name}</span></p>
-          )}
-          {/* {deal.dealSource} */}
-          {deal.dealSource && (
-            <p>Deal Source: <span>Community</span></p>
-          )}
+          <div className='deal-header'>
+              <p className='deal-name'>{deal.name}</p>
+              {deal.website && (
+                <a href={deal.website}>{deal.website}</a>
+              )}
 
-          {deal.dealCaptain && (
-            <p>Deal Captain: <span>{deal.dealCaptain}</span></p>
-          )}
-
-          {deal.website && (
-            <p>Website: <span>{deal.website}</span></p>
-          )}
-
-          {deal.aiSummary && (
-            <p>AI Summary: <div className='scrollable-container'>{deal.aiSummary}</div></p>
-          )}
+              <div className='btn-actions'>
+                {buttonData.map(button => (
+                  <button
+                    key={button.id}
+                    onClick={(event) => handleActionClick(event, button)}
+                  >
+                    <div>
+                    {button.emoji}
+                    </div>
+                  </button>
+                ))}
+              </div>
           </div>
 
-          <div className='actions-desc'>
-            <p>More Actions:</p>
-            <p>🙋‍♂️ - ask for the pitch deck</p>
-            <p>ℹ️ - have info on founders/deal/space</p>
-            <p>☎️ - want to join the call with the founders</p>
-            <p>🔔 - subscribe to updates</p>
-          </div>
-          <div className='btn-actions'>
-          {buttonData.map(button => (
-            <button
-              key={button.id}
-              onClick={(event) => handleActionClick(event, button)}
-            >
-              {button.emoji}
-            </button>
-          ))}
-        </div>
           
+
+          <div className='deal-info'>
+            {/* {deal.dealSource} */}
+            <div className='info-bg'>
+            {deal.dealSource && (
+              <p><span>Deal Source:</span> Community</p>
+            )}
+            <div className='separator'></div>
+            {deal.dealCaptain && (
+              <p><span>Deal Captain:</span> {deal.dealCaptain}</p>
+            )}
+            <div className='separator'></div>
+            {deal.founders && (
+              <div>
+                <p><span>Founders:</span> {deal.founders.join(', ')}</p>
+              </div>
+            )}
+            </div>
+            
+
+            {deal.aiSummary && (
+              <p><span>AI Summary:</span> <div className='scrollable-container'>{deal.aiSummary}</div></p>
+            )}
+
+            {deal.like && (
+              <p><span>Why we like it:</span> <div className='scrollable-container'>{deal.like}</div></p>
+            )}
+          </div>
         </>
       ) : (
         <p>No deal data available.</p>

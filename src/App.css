@@ -14,9 +14,8 @@
   text-align: left;
   display: flex;
   flex-direction: column;
-  background: rgba(100, 100, 100, 0.3);;
   height: 95vh;
-  justify-content: center;
+  justify-content: start;
   line-height: 1.1em;
 }
 
@@ -39,22 +38,63 @@
   text-align: center; /* Optional: Center the text if it's multiline */
 }
 
+.deal-name {
+  font-size: 2em;
+  margin: 20px 0px;
+}
+
+.deal-header {
+  text-align: center;
+  margin: 0px auto;
+  width: 100%;
+}
+
 .denied-message span {
   font-size: 0.5em;
   color: red;
 }
 
 .back-btn {
-  width: 40px;
+  width: 30px;
+  color: white;
+}
+
+.separator {
+  width: 95%;
+  height: 1px;
+  background: #343436;
+  margin: 0px auto;
+}
+
+.deal-info {
+  margin-top: 20px;
+}
+
+.deal-info span {
+  color: #808080;
+  font-weight: bold;
+}
+
+.deal-info p {
+  padding: 2px;
+}
+
+.deal-info div {
+  padding: 2px;
+}
+
+.info-bg {
+  background: #D9D9D910;
+  border-radius: 10px;
 }
 
 .scrollable-container {
   margin-top: 10px;
-  background: grey;
+  background: #D9D9D910;
   border-radius: 10px;
   height: 80px; /* Adjust height as needed */
   overflow-y: auto; /* Adds vertical scrollbar */
-  padding: 10px; /* Optional: adds padding inside the container */
+  padding: 10px !important; /* Optional: adds padding inside the container */
 }
 
 .actions-desc {
@@ -64,14 +104,18 @@
 
 .btn-actions {
   display: flex;
+  margin-top: 30px;
+  gap: 10px;
+  width: 100%;
 }
 .btn-actions button {
-  margin: 7px;
-  width: 50px;
-  height: 40px;
+  width: 25%;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 1.5em;
+  background: #D9D9D910;
 }
 
 .logo {
