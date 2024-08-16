@@ -112,7 +112,6 @@ function App(props: any) {
     // Show a loading state while auth is being checked
     return (
       <div className="loading-screen">
-        <InfinitySpin width="200" color="white" />
       </div>
     );
   }
