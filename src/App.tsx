@@ -39,7 +39,7 @@ const checkUserMembership = async (userId: any) => {
 function App(props: any) {
   const [data, setData] = useState<DataDict>({});
   const [loading, setLoading] = useState(false);
-  const [auth, setAuth] = useState(false);
+  const [auth, setAuth] = useState<boolean | null>(null);
   const user = props.data.user;
   const formattedDate = (new Date).toISOString().slice(0, 19).replace('T', ' ').toString();
 
@@ -108,6 +108,15 @@ function App(props: any) {
     console.log(data)
   }, []); // Empty dependency array ensures this effect runs only once, similar to componentDidMount
 
+  if (auth === null) {
+    // Show a loading state while auth is being checked
+    return (
+      <div className="loading-screen">
+        <InfinitySpin width="200" color="white" />
+      </div>
+    );
+  }
+  
   return (
     <>{auth ? <Routes>
       <Route path="/" element={
