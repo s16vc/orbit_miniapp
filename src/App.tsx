@@ -88,7 +88,7 @@ function App(props: any) {
         const preloadData = response.data;
         console.log(preloadData);
         setData(preloadData)
-      } catch (error) {
+      } catch (error: any) {
         console.error('Error fetching data:', error);
       } finally {
         setLoading(false)
