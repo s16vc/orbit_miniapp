@@ -51,9 +51,6 @@ function App(props: any) {
     event.preventDefault();
     posthog?.capture('click', { property: clickData })
     const deal = clickData.deal;
-    // if (deal.url) {
-    //   window.location.href = deal.url;
-    // }
     if (deal) {
       navigate('/deal', { state: { deal, user } }); // Navigate to the new page with deal data
     }
@@ -146,7 +143,14 @@ function App(props: any) {
                  <div className='stage-card'>
                    {data[stage].map((deal, index) => (
                      <>
-                       <a key={index} href={deal.url} className='deal-entry' onClick={(event) => handleClick(event, {deal: deal, user: user, timestamp: formattedDate, event: "click"}, posthog)}>{deal.name}</a>
+                       <div key={index} className='deal-entry' onClick={(event) => handleClick(event, {deal: deal, user: user, timestamp: formattedDate, event: "click"}, posthog)}>
+                        <p>{deal.name}</p>
+                        <div className='sector-tags'>
+                          {deal.sectors.map((sector: any) => (
+                            <p className='sector'>{sector}</p>
+                          ))}
+                        </div>
+                        </div>
                        {index < data[stage].length-1 && (<hr className="solid"></hr>)}
                      </>
                    ))}

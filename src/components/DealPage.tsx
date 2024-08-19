@@ -73,16 +73,14 @@ function DealPage() {
                     onClick={(event) => handleActionClick(event, button)}
                   >
                     <div>
-                    <p className='emoji'>{button.emoji}</p>
-                    <p>{button.label}</p>
+                      <p className='emoji'>{button.emoji}</p>
+                      <p>{button.label}</p>
                     </div>
                     
                   </button>
                 ))}
               </div>
           </div>
-
-          
 
           <div className='deal-info'>
             {/* {deal.dealSource} */}
@@ -102,7 +100,6 @@ function DealPage() {
             )}
             </div>
             
-
             {deal.aiSummary && (
               <p><span>AI Summary:</span> <div className='scrollable-container'>{deal.aiSummary}</div></p>
             )}

@@ -8,8 +8,7 @@
 .deal-page {
   font-size: 0.9em;
   color: white;
-  margin: 20px;
-  padding: 10px;
+  padding: 15px;
   border-radius: 20px;
   text-align: left;
   display: flex;
@@ -64,6 +63,7 @@
   height: 1px;
   background: #343436;
   margin: 0px auto;
+  padding: 0px !important;
 }
 
 .deal-info {
@@ -84,13 +84,13 @@
 }
 
 .info-bg {
-  background: #D9D9D910;
+  background: #D9D9D915;
   border-radius: 10px;
 }
 
 .scrollable-container {
   margin-top: 10px;
-  background: #D9D9D910;
+  background: #D9D9D915;
   border-radius: 10px;
   height: 80px; /* Adjust height as needed */
   overflow-y: auto; /* Adds vertical scrollbar */
@@ -103,9 +103,10 @@
 }
 
 .btn-actions {
-  display: flex;
   margin-top: 30px;
-  gap: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
   width: 100%;
 }
 .btn-actions button {
@@ -115,7 +116,7 @@
   justify-content: center;
   align-items: center;
   font-size: 1.5em;
-  background: #D9D9D910;
+  background: #D9D9D915;
 }
 
 .emoji {
