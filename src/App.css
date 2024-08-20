@@ -1,3 +1,10 @@
+:root {
+  --font-color: white;
+  --accent-color: #808080;
+  --bg-color: #D9D9D930;
+  --main-bg-color: black;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -68,32 +75,35 @@
 
 .deal-info {
   margin-top: 20px;
+  padding: 0px;
 }
 
 .deal-info span {
-  color: #808080;
+  color: var(--accent-color);
   font-weight: bold;
 }
 
-.deal-info p {
-  padding: 2px;
+.deal-info .info-bg {
+  padding: 5px 10px;
 }
 
-.deal-info div {
-  padding: 2px;
+.deal-info .info-rest p {
+ padding: 0px 10px;
+}
+
+.deal-info .info-rest {
+  text-align: justify;
 }
 
 .info-bg {
-  background: #D9D9D915;
+  background: var(--bg-color);
   border-radius: 10px;
 }
 
 .scrollable-container {
   margin-top: 10px;
-  background: #D9D9D915;
+  background: var(--bg-color);
   border-radius: 10px;
-  height: 80px; /* Adjust height as needed */
-  overflow-y: auto; /* Adds vertical scrollbar */
   padding: 10px !important; /* Optional: adds padding inside the container */
 }
 
@@ -111,21 +121,23 @@
 }
 .btn-actions button {
   width: 25%;
-  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.5em;
-  background: #D9D9D915;
+  background: var(--bg-color);
+  padding: 0px;
 }
 
 .emoji {
   font-size: 20px !important;
+  margin: 0px;
 }
 
 .btn-actions button p {
   color: white;
   font-size: 8px;
+  font-weight: 200;
 }
 
 .logo {

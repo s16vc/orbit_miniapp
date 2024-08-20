@@ -144,12 +144,12 @@ function App(props: any) {
                    {data[stage].map((deal, index) => (
                      <>
                        <div key={index} className='deal-entry' onClick={(event) => handleClick(event, {deal: deal, user: user, timestamp: formattedDate, event: "click"}, posthog)}>
-                        <p>{deal.name}</p>
-                        <div className='sector-tags'>
-                          {deal.sectors.map((sector: any) => (
-                            <p className='sector'>{sector}</p>
-                          ))}
-                        </div>
+                          <p className='dealname'>{deal.name}</p>
+                          <div className='sector-tags'>
+                            {deal.sectors.map((sector: any) => (
+                              <p className='sector'>{sector}</p>
+                            ))}
+                          </div>
                         </div>
                        {index < data[stage].length-1 && (<hr className="solid"></hr>)}
                      </>

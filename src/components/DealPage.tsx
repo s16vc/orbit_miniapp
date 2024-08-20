@@ -63,7 +63,7 @@ function DealPage() {
           <div className='deal-header'>
               <p className='deal-name'>{deal.name}</p>
               {deal.website && (
-                <a href={deal.website}>{deal.website}</a>
+                <a href={deal.website.startsWith('http') ? deal.website : `https://${deal.website}`}  target="_blank" rel="noopener noreferrer">{deal.website}</a>
               )}
 
               <div className='btn-actions'>
@@ -85,29 +85,36 @@ function DealPage() {
           <div className='deal-info'>
             {/* {deal.dealSource} */}
             <div className='info-bg'>
-            {deal.dealSource && (
-              <p><span>Deal Source:</span> Community</p>
-            )}
-            <div className='separator'></div>
-            {deal.dealCaptain && (
-              <p><span>Deal Captain:</span> {deal.dealCaptain}</p>
-            )}
-            <div className='separator'></div>
-            {deal.founders && (
-              <div>
-                <p><span>Founders:</span> {deal.founders.join(', ')}</p>
-              </div>
-            )}
+              {deal.dealSource && (
+                <p><span>Deal Source:</span> Community</p>
+              )}
+              <div className='separator'></div>
+              {deal.dealCaptain && (
+                <p><span>Deal Captain:</span> {deal.dealCaptain}</p>
+              )}
+              <div className='separator'></div>
+              {deal.founders && (
+                  <p><span>Founders:</span> {deal.founders.join(', ')}</p>
+              )}
             </div>
-            
-            {deal.aiSummary && (
-              <p><span>AI Summary:</span> <div className='scrollable-container'>{deal.aiSummary}</div></p>
-            )}
+            <div className='info-rest'>
+              {deal.aiSummary && (
+                <div>
+                  <p><span>AI Summary:</span></p>
+                  <div className='scrollable-container'>{deal.aiSummary}</div>
+                </div>
+              )}
 
-            {deal.like && (
-              <p><span>Why we like it:</span> <div className='scrollable-container'>{deal.like}</div></p>
-            )}
+              {deal.like && (
+                <div>
+                  <p><span>Why we like it:</span></p>
+                  <div className='scrollable-container'>{deal.like}</div>
+                </div>
+                
+              )}
           </div>
+          </div>
+          
         </>
       ) : (
         <p>No deal data available.</p>

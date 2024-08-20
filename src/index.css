@@ -3,9 +3,10 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --font-color: white;
+  --accent-color: #808080;
+  --bg-color: #D9D9D930;
+  --main-bg-color: black;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -55,6 +56,11 @@
   align-items: center;
 }
 
+.deal-entry:hover .dealname  {
+  color: yellow;
+  font-weight: bold;
+}
+
 .sector-tags {
   display: flex;
   flex-wrap: wrap;
@@ -70,7 +76,7 @@
   height: 15px;
   padding: 0px 10px;
   background: blue;
-  color: black;
+  color: var(--main-bg-color);
 }
 
 .deal-entry p {
@@ -113,7 +119,7 @@
   font-size: 0.9em;
   text-align: left;
   padding-left: 20px;
-  color: grey;
+  color: var(--accent-color);
 }
 
 .deal-stage {
