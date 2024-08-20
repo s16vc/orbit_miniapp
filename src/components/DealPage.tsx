@@ -63,7 +63,7 @@ function DealPage() {
           <div className='deal-header'>
               <p className='deal-name'>{deal.name}</p>
               {deal.website && (
-                <a href={deal.website.startsWith('http') ? deal.website : `https://${deal.website}`}  target="_blank" rel="noopener noreferrer">{deal.website}</a>
+                <a className='dealWebsite' href={deal.website.startsWith('http') ? deal.website : `https://${deal.website}`}  target="_self">{deal.website}</a>
               )}
 
               <div className='btn-actions'>
