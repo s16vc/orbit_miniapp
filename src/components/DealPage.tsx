@@ -63,7 +63,7 @@ function DealPage() {
           <div className='deal-header'>
               <p className='deal-name'>{deal.name}</p>
               {deal.website && (
-                <a className='dealWebsite' href={deal.website.startsWith('http') ? deal.website : `https://${deal.website}`}  target="_self">{deal.website}</a>
+                <a className='dealWebsite' href={deal.website.startsWith('http') ? deal.website : `https://${deal.website}`}  target="_target">{deal.website}</a>
               )}
 
               <div className='btn-actions'>
@@ -72,7 +72,7 @@ function DealPage() {
                     key={button.id}
                     onClick={(event) => handleActionClick(event, button)}
                   >
-                    <div>
+                    <div className='btn-container'>
                       <p className='emoji'>{button.emoji}</p>
                       <p>{button.label}</p>
                     </div>
@@ -100,14 +100,14 @@ function DealPage() {
             <div className='info-rest'>
               {deal.aiSummary && (
                 <div>
-                  <p><span>AI Summary:</span></p>
+                  <p><span>AI Summary</span></p>
                   <div className='scrollable-container'>{deal.aiSummary}</div>
                 </div>
               )}
 
               {deal.like && (
                 <div>
-                  <p><span>Why we like it:</span></p>
+                  <p><span>Why we like it</span></p>
                   <div className='scrollable-container'>{deal.like}</div>
                 </div>
                 

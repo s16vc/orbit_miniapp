@@ -119,6 +119,7 @@
   gap: 5px;
   width: 100%;
 }
+
 .btn-actions button {
   width: 25%;
   display: flex;
@@ -127,6 +128,13 @@
   font-size: 1.5em;
   background: var(--bg-color);
   padding: 4px 0px;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  items-align: center;
 }
 
 .emoji {
