@@ -86,7 +86,7 @@ function DealPage() {
             {/* {deal.dealSource} */}
             <div className='info-bg'>
               {deal.dealSource && (
-                <p><span>Deal Source:</span> Community</p>
+                <p><span>Deal Source:</span> {deal.dealSource.includes("LP") || deal.dealSource.includes("Portfolio Founder") ? "Community" : deal.dealSource.join(', ')}</p>
               )}
               <div className='separator'></div>
               {deal.dealCaptain && (
