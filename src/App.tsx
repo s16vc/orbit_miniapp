@@ -36,6 +36,77 @@ const checkUserMembership = async (userId: any) => {
   }
 };
 
+// Add this function to define colors for each sector
+const getColor = (sector: string) => {
+  const colorMap: { [key: string]: string } = {
+    'B2B SaaS': 'red',
+    'Productivity': 'blue',
+    'Developer Tools': 'green',
+    'B2C SaaS': 'orange',
+    'HealthTech': 'purple',
+    'HR Tech': 'cyan',
+    'Cloud Storage and Computing': 'magenta',
+    'AI': 'lime',
+    'Fintech': 'teal',
+    'Marketplaces': 'navy',
+    'Consumer Tech': 'coral',
+    'No Code / Low Code': 'gold',
+    'Collaboration': 'salmon',
+    'Construction & Real Estate Tech': 'khaki',
+    'EdTech': 'plum',
+    'Media & Entertainment': 'orchid',
+    'E-Commerce': 'lightblue',
+    'FoodTech': 'lightgreen',
+    'Logistics, Delivery and Supply Chain': 'lightcoral',
+    'MarketingTech': 'lightpink',
+    'Proptech': 'lightyellow',
+    'Robotics': 'lavender',
+    'Social Network': 'peachpuff',
+    'Creators\' Economy': 'wheat',
+    'CRM': 'tan',
+    'Cybersecurity Software': 'darkslateblue',
+    'Data Analytics': 'darkorange',
+    'Legal Tech': 'darkviolet',
+    'Sustainability Tech': 'forestgreen',
+    'VR / AR': 'indigo',
+    'Agnostic': 'slategray',
+    'AgTech': 'chartreuse',
+    'Automotive': 'crimson',
+    'Biotech': 'darkred',
+    'BNPL': 'darkgoldenrod',
+    'Business Intelligence': 'darkcyan',
+    'Charity': 'lightseagreen',
+    'Computer Vision': 'mediumvioletred',
+    'Consumer Analytics': 'mediumseagreen',
+    'Consumer Products': 'mediumslateblue',
+    'Consumer Services': 'mediumturquoise',
+    'Cosmetics': 'lightpink',
+    'Dark Kitchen': 'darkkhaki',
+    'Deep Tech': 'darkslategray',
+    'DeFi': 'darkmagenta',
+    'ESG / Impact tech': 'lightsteelblue',
+    'EV': 'lightgray',
+    'Fashion & Apparel': 'lightcoral',
+    'Gaming': 'lightsalmon',
+    'Hardware': 'lightyellow',
+    'Hospitality': 'lightblue',
+    'Industrials': 'lightgreen',
+    'Infrastructure': 'lightpink',
+    'InsurTech': 'lightcyan',
+    'Investment Fund': 'lightgoldenrodyellow',
+    'IoT': 'lightseagreen',
+    'Mental Health': 'lightsteelblue',
+    'Mobility': 'lightgray',
+    'Music': 'lightcoral',
+    'NFTs': 'lightpink',
+    'Sport': 'lightyellow',
+    'Telemedicine': 'lightblue',
+    'Travel Tech': 'lightgreen',
+    'Web 3 / Crypto': 'lightpink',
+  };
+  return colorMap[sector] || 'black'; // Default color if sector not found
+}
+
 function App(props: any) {
   const [data, setData] = useState<DataDict>({});
   const [loading, setLoading] = useState(false);
@@ -147,7 +218,7 @@ function App(props: any) {
                           <p className='dealname'>{deal.name}</p>
                           <div className='sector-tags'>
                             {deal.sectors.map((sector: any) => (
-                              <p className='sector'>{sector}</p>
+                              <p className='sector' style={{background: getColor(sector)}}>{sector}</p>
                             ))}
                           </div>
                         </div>
