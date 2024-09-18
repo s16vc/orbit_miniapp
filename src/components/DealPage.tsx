@@ -112,6 +112,14 @@ function DealPage() {
                 </div>
                 
               )}
+
+              {deal.rejectionComment && (
+                <div>
+                  <p><span>Rejection Comment</span></p>
+                  <div className='scrollable-container'>{deal.rejectionComment}</div>
+                </div>
+                
+              )}
           </div>
           </div>
           
