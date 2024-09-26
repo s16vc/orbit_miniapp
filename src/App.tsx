@@ -21,7 +21,7 @@ const checkUserMembership = async (userId: any) => {
   try {
       const response = await axios.get(url);
       const data = response.data;
-      const isOrbitMember = data.ok && (data.result.status === "member" || data.result.status === "administrator");
+      const isOrbitMember = data.ok && (data.result.status === "member" || data.result.status === "administrator" || data.result.status === "creator");
 
       if (isOrbitMember) {
           console.log('User is a member');
