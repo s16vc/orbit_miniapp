@@ -140,7 +140,7 @@ function App(props: any) {
     if (deal) {
       // set as viewed in the database
       if (user.id) {
-        await setAsViewed(user.id, deal.name);
+        setAsViewed(user.id, deal.name);
       }
       navigate('/deal', { state: { deal, user } }); // Navigate to the new page with deal data
     }
