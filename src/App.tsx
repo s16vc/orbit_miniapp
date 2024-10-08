@@ -125,6 +125,7 @@ const getColor = (sector: string) => {
 function App(props: any) {
   const [data, setData] = useState<DataDict>({});
   const [loading, setLoading] = useState(false);
+  const [viewedDeals, setViewedDeals] = useState([]);
   const [auth, setAuth] = useState<boolean | null>(null);
   const user = props.data.user;
   const formattedDate = (new Date).toISOString().slice(0, 19).replace('T', ' ').toString();
@@ -175,10 +176,18 @@ function App(props: any) {
         const preloadData = response.data;
         console.log(preloadData);
         setData(preloadData)
+
+        const r = await axios.get('https://eoxv3coove8ffsc.m.pipedream.net', {
+          params: {
+            userId: user.id
+          }
+        })
+        setViewedDeals(r.data);
       } catch (error: any) {
         console.error('Error fetching data:', error);
       } finally {
         setLoading(false)
+        console.log(setViewedDeals);
       }
     };
 
