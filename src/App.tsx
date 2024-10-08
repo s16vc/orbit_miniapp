@@ -155,6 +155,7 @@ function App(props: any) {
   console.log(formattedDate)
   useEffect(() => {
     console.log(user);
+    console.log(viewedDeals)
     if (user) {
       posthog?.identify(`${user.first_name} ${user.last_name}`);
     }
@@ -187,7 +188,7 @@ function App(props: any) {
         console.error('Error fetching data:', error);
       } finally {
         setLoading(false)
-        console.log(setViewedDeals);
+        console.log(viewedDeals);
       }
     };
 
