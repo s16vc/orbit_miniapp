@@ -15,21 +15,6 @@ import axios from 'axios';
 const botToken = '6644795511:AAF94mSfaDNi1otHwwBzt_LsnlV0xhJdIrw';
 const chatId = '-1002142817225'; // or use chat ID if available
 
-const setAsViewed = async(userId: any, dealname: any) => {
-  const url = `https://eoh217vgfitqmyc.m.pipedream.net`;
-
-  try {
-      const payload = {
-        userId: userId,
-        deal: dealname
-      }
-      await axios.post(url, payload);
-  } catch (error: any) {
-      console.error('Error making request:', error.message);
-      return false;
-  }
-}
-
 const checkUserMembership = async (userId: any) => {
   const url = `https://api.telegram.org/bot${botToken}/getChatMember?chat_id=${chatId}&user_id=${userId}`;
 
@@ -154,6 +139,23 @@ function App(props: any) {
 
   const posthog = usePostHog();
   const navigate = useNavigate(); // Use useNavigate hook
+
+  const setAsViewed = async(userId: any, dealname: any) => {
+    setViewedDeals([...viewedDeals, dealname])
+    // record the viewed deal
+    const url = `https://eoh217vgfitqmyc.m.pipedream.net`;
+  
+    try {
+        const payload = {
+          userId: userId,
+          deal: dealname
+        }
+        await axios.post(url, payload);
+    } catch (error: any) {
+        console.error('Error making request:', error.message);
+        return false;
+    }
+  }
 
   async function handleClick(event: any, clickData: any, posthog: any) {
     console.log("Yoooo")
