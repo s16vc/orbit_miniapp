@@ -125,7 +125,7 @@ const getColor = (sector: string) => {
 function App(props: any) {
   const [data, setData] = useState<DataDict>({});
   const [loading, setLoading] = useState(false);
-  const [viewedDeals, setViewedDeals] = useState([]);
+  const [viewedDeals, setViewedDeals] = useState<any[]>([]);
   const [auth, setAuth] = useState<boolean | null>(null);
   let user = props.data.user;
   if (process.env.NODE_ENV === 'development') {
@@ -262,10 +262,10 @@ function App(props: any) {
                <p className='deal-stage'>{stage}</p>
                {data[stage].length > 0 ? (
                  <div className='stage-card'>
-                   {data[stage].map((deal, index) => (
+                   {data[stage].map((deal: any, index: number) => (
                      <>
                        <div key={index} className='deal-entry' onClick={(event) => handleClick(event, {deal: deal, user: user, timestamp: formattedDate, event: "click", userType: userType}, posthog)}>
-                          <p className={!viewedDeals.includes(deal?.name) ? 'newDeal' : 'dealname'}>{deal.name}</p>
+                          <p className={!viewedDeals.includes(deal.name) ? 'newDeal' : 'dealname'}>{deal.name}</p>
                           <div className='sector-tags'>
                             {deal.sectors.map((sector: any) => (
                               <p className='sector' style={{background: getColor(sector)}}>{sector}</p>
