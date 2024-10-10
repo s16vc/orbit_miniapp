@@ -1,6 +1,7 @@
 // DealPage.jsx
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { usePostHog } from 'posthog-js/react';
 import WebApp from '@twa-dev/sdk'
 import arrow from '../assets/arrow-left.svg'
 
@@ -9,6 +10,7 @@ function DealPage() {
   const location = useLocation();
   const deal = location.state?.deal; // Access the transferred data
   const user = location.state?.user; // Access the transferred data
+  const posthog = usePostHog();
 
   console.log(user);
   console.log(deal);
@@ -17,6 +19,18 @@ function DealPage() {
 
   async function handleClick() {
     navigate('/');
+  }
+
+  async function handleLinkClick(event: any, deal: any) {
+    console.log(event);
+    const clickData = {
+      deal: deal.name,
+      link: deal.website
+    }
+    posthog?.capture('deal_link_clicked', clickData);
+
+    const link = deal.website.startsWith('http') ? deal.website : `https://${deal.website}`
+    window.open(link, '_blank');
   }
 
   async function handleActionClick(event: any, button: any) {
@@ -63,8 +77,9 @@ function DealPage() {
           <div className='deal-header'>
               <p className='deal-name'>{deal.name}</p>
               {deal.website && (
-                <a className='dealWebsite' href={deal.website.startsWith('http') ? deal.website : `https://${deal.website}`}  target="_target">{deal.website}</a>
+                <div className='dealWebsite' onClick={(event) => handleLinkClick(event, deal)}>{deal.website}</div>
               )}
+              {/* href={deal.website.startsWith('http') ? deal.website : `https://${deal.website}`} */}
 
               <div className='btn-actions'>
                 {buttonData.map(button => (

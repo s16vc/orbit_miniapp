@@ -12,6 +12,11 @@
   text-align: center;
 }
 
+.dealWebsite {
+  color: #646cff;
+  font-weight: bold;
+}
+
 .deal-page {
   font-size: 0.9em;
   color: white;

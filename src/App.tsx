@@ -160,7 +160,7 @@ function App(props: any) {
   async function handleClick(event: any, clickData: any, posthog: any) {
     console.log("Yoooo")
     event.preventDefault();
-    posthog?.capture('deal_clicked', { property: clickData })
+    posthog?.capture('deal_clicked', clickData)
     const deal = clickData.deal;
     if (deal) {
       // set as viewed in the database
@@ -173,7 +173,7 @@ function App(props: any) {
 
   async function handleOpen(openData: any, posthog: any) {
     console.log("app opened")
-    posthog?.capture('app_open', { property: openData })
+    posthog?.capture('app_open', openData)
   }
 
   console.log(formattedDate)
