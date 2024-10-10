@@ -54,70 +54,70 @@ const checkUserMembership = async (userId: any) => {
 // Add this function to define colors for each sector
 const getColor = (sector: string) => {
   const colorMap: { [key: string]: string } = {
-    'B2B SaaS': 'red',
-    'Productivity': 'blue',
-    'Developer Tools': 'green',
-    'B2C SaaS': 'orange',
-    'HealthTech': 'purple',
-    'HR Tech': 'cyan',
-    'Cloud Storage and Computing': 'magenta',
-    'AI': 'lime',
-    'Fintech': 'teal',
-    'Marketplaces': 'navy',
-    'Consumer Tech': 'coral',
-    'No Code / Low Code': 'gold',
-    'Collaboration': 'salmon',
-    'Construction & Real Estate Tech': 'khaki',
-    'EdTech': 'plum',
-    'Media & Entertainment': 'orchid',
-    'E-Commerce': 'lightblue',
-    'FoodTech': 'lightgreen',
-    'Logistics, Delivery and Supply Chain': 'lightcoral',
-    'MarketingTech': 'lightpink',
-    'Proptech': 'lightyellow',
-    'Robotics': 'lavender',
-    'Social Network': 'peachpuff',
-    'Creators\' Economy': 'wheat',
-    'CRM': 'tan',
-    'Cybersecurity Software': 'darkslateblue',
-    'Data Analytics': 'darkorange',
-    'Legal Tech': 'darkviolet',
-    'Sustainability Tech': 'forestgreen',
-    'VR / AR': 'indigo',
-    'Agnostic': 'slategray',
-    'AgTech': 'chartreuse',
-    'Automotive': 'crimson',
-    'Biotech': 'darkred',
-    'BNPL': 'darkgoldenrod',
-    'Business Intelligence': 'darkcyan',
-    'Charity': 'lightseagreen',
-    'Computer Vision': 'mediumvioletred',
-    'Consumer Analytics': 'mediumseagreen',
-    'Consumer Products': 'mediumslateblue',
-    'Consumer Services': 'mediumturquoise',
-    'Cosmetics': 'lightpink',
-    'Dark Kitchen': 'darkkhaki',
-    'Deep Tech': 'darkslategray',
-    'DeFi': 'darkmagenta',
-    'ESG / Impact tech': 'lightsteelblue',
-    'EV': 'lightgray',
-    'Fashion & Apparel': 'lightcoral',
-    'Gaming': 'lightsalmon',
-    'Hardware': 'lightyellow',
-    'Hospitality': 'lightblue',
-    'Industrials': 'lightgreen',
-    'Infrastructure': 'lightpink',
-    'InsurTech': 'lightcyan',
-    'Investment Fund': 'lightgoldenrodyellow',
-    'IoT': 'lightseagreen',
-    'Mental Health': 'lightsteelblue',
-    'Mobility': 'lightgray',
-    'Music': 'lightcoral',
-    'NFTs': 'lightpink',
-    'Sport': 'lightyellow',
-    'Telemedicine': 'lightblue',
-    'Travel Tech': 'lightgreen',
-    'Web 3 / Crypto': 'lightpink',
+    'B2B SaaS': '#FFB3BA',
+    'Productivity': '#BAFFC9',
+    'Developer Tools': '#BAE1FF',
+    'B2C SaaS': '#FFFFBA',
+    'HealthTech': '#E6E6FA',
+    'HR Tech': '#E0FFFF',
+    'Cloud Storage and Computing': '#FFE4E1',
+    'AI': '#98FB98',
+    'Fintech': '#AFEEEE',
+    'Marketplaces': '#D8BFD8',
+    'Consumer Tech': '#FFDAB9',
+    'No Code / Low Code': '#F0E68C',
+    'Collaboration': '#FFA07A',
+    'Construction & Real Estate Tech': '#F0E68C',
+    'EdTech': '#DDA0DD',
+    'Media & Entertainment': '#E6E6FA',
+    'E-Commerce': '#ADD8E6',
+    'FoodTech': '#90EE90',
+    'Logistics, Delivery and Supply Chain': '#F08080',
+    'MarketingTech': '#FFB6C1',
+    'Proptech': '#FAFAD2',
+    'Robotics': '#E6E6FA',
+    'Social Network': '#FFDAB9',
+    'Creators\' Economy': '#F5DEB3',
+    'CRM': '#D2B48C',
+    'Cybersecurity Software': '#B0C4DE',
+    'Data Analytics': '#FFDAB9',
+    'Legal Tech': '#D8BFD8',
+    'Sustainability Tech': '#98FB98',
+    'VR / AR': '#E6E6FA',
+    'Agnostic': '#D3D3D3',
+    'AgTech': '#7FFF00',
+    'Automotive': '#FFA07A',
+    'Biotech': '#FFB6C1',
+    'BNPL': '#F0E68C',
+    'Business Intelligence': '#E0FFFF',
+    'Charity': '#20B2AA',
+    'Computer Vision': '#FFB6C1',
+    'Consumer Analytics': '#8FBC8F',
+    'Consumer Products': '#B0C4DE',
+    'Consumer Services': '#AFEEEE',
+    'Cosmetics': '#FFB6C1',
+    'Dark Kitchen': '#BDB76B',
+    'Deep Tech': '#A9A9A9',
+    'DeFi': '#DDA0DD',
+    'ESG / Impact tech': '#B0C4DE',
+    'EV': '#D3D3D3',
+    'Fashion & Apparel': '#FFA07A',
+    'Gaming': '#FFA07A',
+    'Hardware': '#FAFAD2',
+    'Hospitality': '#ADD8E6',
+    'Industrials': '#90EE90',
+    'Infrastructure': '#FFB6C1',
+    'InsurTech': '#E0FFFF',
+    'Investment Fund': '#FAFAD2',
+    'IoT': '#20B2AA',
+    'Mental Health': '#B0C4DE',
+    'Mobility': '#D3D3D3',
+    'Music': '#FFA07A',
+    'NFTs': '#FFB6C1',
+    'Sport': '#FAFAD2',
+    'Telemedicine': '#ADD8E6',
+    'Travel Tech': '#90EE90',
+    'Web 3 / Crypto': '#FFB6C1',
   };
   return colorMap[sector] || 'black'; // Default color if sector not found
 }
@@ -127,7 +127,29 @@ function App(props: any) {
   const [loading, setLoading] = useState(false);
   const [viewedDeals, setViewedDeals] = useState([]);
   const [auth, setAuth] = useState<boolean | null>(null);
-  const user = props.data.user;
+  let user = props.data.user;
+  if (process.env.NODE_ENV === 'development') {
+    user = {
+      id: 5740776938,
+      first_name: "dev",
+      last_name: ""
+    }
+  }
+  // determine user type: LP or team
+  const team = [
+    "Isham Le Tenoux",
+    "Szymon Brodziak",
+    "Dina Gainullina",
+    "Jane Milyaeva",
+    "Oleg Bibergan",
+    "Aleks",
+    "Diana",
+    "Juli",
+    "Leo Batalov",
+    "Bowei G"
+  ]
+
+  const userType = team.includes(`${user.first_name} ${user.last_name}`) ? "team" : "LP"
   const formattedDate = (new Date).toISOString().slice(0, 19).replace('T', ' ').toString();
 
   const posthog = usePostHog();
@@ -136,7 +158,7 @@ function App(props: any) {
   async function handleClick(event: any, clickData: any, posthog: any) {
     console.log("Yoooo")
     event.preventDefault();
-    posthog?.capture('click', { property: clickData })
+    posthog?.capture('deal_clicked', { property: clickData })
     const deal = clickData.deal;
     if (deal) {
       // set as viewed in the database
@@ -149,7 +171,7 @@ function App(props: any) {
 
   async function handleOpen(openData: any, posthog: any) {
     console.log("app opened")
-    posthog?.capture('open', { property: openData })
+    posthog?.capture('app_open', { property: openData })
   }
 
   console.log(formattedDate)
@@ -188,7 +210,6 @@ function App(props: any) {
         console.error('Error fetching data:', error);
       } finally {
         setLoading(false)
-        console.log(viewedDeals);
       }
     };
 
@@ -243,8 +264,8 @@ function App(props: any) {
                  <div className='stage-card'>
                    {data[stage].map((deal, index) => (
                      <>
-                       <div key={index} className='deal-entry' onClick={(event) => handleClick(event, {deal: deal, user: user, timestamp: formattedDate, event: "click"}, posthog)}>
-                          <p className='dealname'>{deal.name}</p>
+                       <div key={index} className='deal-entry' onClick={(event) => handleClick(event, {deal: deal, user: user, timestamp: formattedDate, event: "click", userType: userType}, posthog)}>
+                          <p className={!viewedDeals.includes(deal?.name) ? 'newDeal' : 'dealname'}>{deal.name}</p>
                           <div className='sector-tags'>
                             {deal.sectors.map((sector: any) => (
                               <p className='sector' style={{background: getColor(sector)}}>{sector}</p>

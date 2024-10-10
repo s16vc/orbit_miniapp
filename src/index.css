@@ -58,9 +58,14 @@
 
 .deal-entry:hover {
   cursor: pointer;
+  font-size: 1.01em;
 }
 
 .deal-entry:hover .dealname  {
+  font-weight: bold;
+}
+
+.newDeal {
   font-weight: bold;
 }
 
