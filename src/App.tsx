@@ -115,10 +115,11 @@ function App(props: any) {
   let user = props.data.user;
   if (process.env.NODE_ENV === 'development') {
     user = {
-      id: 5740776938,
+      id: 5861198087,
       first_name: "dev",
       last_name: ""
     }
+    // dev 5740776938
   }
   // determine user type: LP or team
   const team = [
@@ -207,7 +208,10 @@ function App(props: any) {
             userId: user.id
           }
         })
-        setViewedDeals(r.data);
+        console.log(`viewed deals: ${JSON.stringify(r.data)}`)
+        if (Array.isArray(r.data)) {
+          setViewedDeals(r.data);
+        }
       } catch (error: any) {
         console.error('Error fetching data:', error);
       } finally {
