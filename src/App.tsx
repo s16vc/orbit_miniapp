@@ -182,7 +182,12 @@ function App(props: any) {
     console.log(user);
     console.log(viewedDeals)
     if (user) {
-      posthog?.identify(`${user.first_name} ${user.last_name}`);
+      posthog?.identify(
+        `${user.first_name} ${user.last_name}`,
+        {
+          userType: userType
+        }
+      );
     }
 
     async function checkUserOrbitMembership() {
