@@ -181,14 +181,13 @@ function App(props: any) {
   useEffect(() => {
     console.log(user);
     console.log(viewedDeals)
-    if (user) {
-      posthog?.identify(
-        `${user.first_name} ${user.last_name}`,
-        {
-          userType: userType
-        }
-      );
-    }
+    
+    posthog?.identify(
+      `${user.first_name} ${user.last_name}`,
+      {
+        userType: userType
+      }
+    );
 
     async function checkUserOrbitMembership() {
       const authorized = await checkUserMembership(user.id);
