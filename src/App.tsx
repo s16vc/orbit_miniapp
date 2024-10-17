@@ -269,6 +269,7 @@ function App(props: any) {
            <div className='deal-directory-menu'>
            {Object.keys(data).map((stage) => (
              <div key={stage}>
+              <p>TEST OF STAGING</p>
                <p className='deal-stage'>{stage}</p>
                {data[stage].length > 0 ? (
                  <div className='stage-card'>
