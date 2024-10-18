@@ -34,9 +34,9 @@
   font-size: 2em;
   color: white;
   display: flex;
-  justify-content: center; /* Horizontally center */
-  align-items: center; /* Vertically center */
-  height: 100vh; /* Make the container full height of the viewport */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .denied-message {
