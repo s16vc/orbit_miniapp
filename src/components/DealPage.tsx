@@ -64,7 +64,7 @@ function DealPage() {
     console.log('Button clicked with data:', button);
     if (button.label === "Subscribe") {
       WebApp.showPopup({
-          title: "Disclaimer",
+          title: "Be honest",
           message: button.message,
           buttons: [
               { text: "Don't have a conflict", type: "default" },  // Default button
