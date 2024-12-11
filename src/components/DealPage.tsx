@@ -67,8 +67,8 @@ function DealPage() {
           title: "Disclaimer",
           message: button.message,
           buttons: [
-              { text: "OK", type: "default" },  // Default button
-              { text: "Cancel", type: "destructive" } // Destructive button
+              { text: "Don't have a conflict", type: "default" },  // Default button
+              { text: "Have conflict", type: "destructive" } // Destructive button
           ]
       }, async(buttonId) => {
           // Callback function for button actions
