@@ -64,7 +64,7 @@ function DealPage() {
     console.log('Button clicked with data:', button);
     if (button.label === "Subscribe") {
       WebApp.showPopup({
-          title: "Your Popup Title",
+          title: "Disclaimer",
           message: button.message,
           buttons: [
               { text: "OK", type: "default" },  // Default button
@@ -81,7 +81,7 @@ function DealPage() {
       });
     } else {
       WebApp.showAlert(button.message);
-      // orbitInteraction(button.value)
+      orbitInteraction(button.value)
     }
     
     // in case button is subscribe check for approval
