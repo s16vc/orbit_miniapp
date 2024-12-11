@@ -91,7 +91,7 @@ function DealPage() {
     { id: 1, value: `CommunityRequestInfo_${deal.atid}`, emoji: '🙋‍♂️', message: 'Thank for your offer to help! We have notified the deal captain.', label: 'Request a deck'},
     { id: 2, value: `CommunityCanHelp_${deal.atid}`, emoji: 'ℹ️', message: 'Request received! You will receive the data shortly.', label: 'Share info'},
     { id: 3, value: `CommunityRequestCall_${deal.atid}`, emoji: '☎️', message: 'Request received! The deal captain has been notified.', label: 'Join a call'},
-    { id: 4, value: `CommunitySetAlert_${deal.atid}`, emoji: '🔔', message: 'Alert Set. You will receive a message whenever this deal has an update', label: 'Subscribe'}
+    { id: 4, value: `CommunitySetAlert_${deal.atid}`, emoji: '🔔', message: "By subscribing, you agree to keep all information confidential and confirm no conflicts of interest. If you'd like to contact the founders, just ask us for an intro.", label: 'Subscribe'}
   ];
 
   return (
