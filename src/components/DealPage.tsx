@@ -33,10 +33,7 @@ function DealPage() {
     window.open(link, '_blank');
   }
 
-  async function handleActionClick(event: any, button: any) {
-    console.log(event)
-    console.log('Button clicked with data:', button);
-    WebApp.showAlert(button.message);
+  async function orbitInteraction(buttonValue) {
     try {
       const payload = {
         "callback_query": {
@@ -53,13 +50,41 @@ function DealPage() {
                     "id": "123"
                 }
             },
-            "data": button.value
+            "data": buttonValue
         }
     }
       await axios.post('https://eoge8y8hn354lrl.m.pipedream.net', payload);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
+  }
+
+  async function handleActionClick(event: any, button: any) {
+    console.log(event)
+    console.log('Button clicked with data:', button);
+    if (button.label === "Subscribe") {
+      WebApp.showPopup({
+          title: "Your Popup Title",
+          message: button.message,
+          buttons: [
+              { text: "OK", type: "default" },  // Default button
+              { text: "Cancel", type: "destructive" } // Destructive button
+          ]
+      }, async(buttonId) => {
+          // Callback function for button actions
+          if (buttonId === "OK") {
+              console.log("OK button clicked");
+              await orbitInteraction(button.value)
+          } else if (buttonId === "Cancel") {
+              console.log("Cancel button clicked");
+          }
+      });
+    } else {
+      WebApp.showAlert(button.message);
+      // orbitInteraction(button.value)
+    }
+    
+    // in case button is subscribe check for approval
   }
 
   const buttonData = [
