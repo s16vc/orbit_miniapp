@@ -33,7 +33,7 @@ function DealPage() {
     window.open(link, '_blank');
   }
 
-  async function orbitInteraction(buttonValue) {
+  async function orbitInteraction(buttonValue: string) {
     try {
       const payload = {
         "callback_query": {
