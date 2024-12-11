@@ -72,10 +72,10 @@ function DealPage() {
           ]
       }, async(buttonId) => {
           // Callback function for button actions
-          if (buttonId === "OK") {
+          if (buttonId === "Don't have a conflict") {
               console.log("OK button clicked");
               await orbitInteraction(button.value)
-          } else if (buttonId === "Cancel") {
+          } else if (buttonId === "Have conflict") {
               console.log("Cancel button clicked");
           }
       });
