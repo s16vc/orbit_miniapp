@@ -67,8 +67,8 @@ function DealPage() {
           title: "Be honest",
           message: button.message,
           buttons: [
-              { text: "Don't have a conflict", type: "default" },  // Default button
-              { text: "Have conflict", type: "destructive" } // Destructive button
+              { text: "I have conflict", type: "destructive" }, // Destructive button
+              { text: "I don't have a conflict", type: "default" }  // Default button
           ]
       }, async(buttonId) => {
           // Callback function for button actions
