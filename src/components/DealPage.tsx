@@ -67,15 +67,15 @@ function DealPage() {
           title: "Be honest",
           message: button.message,
           buttons: [
-              { text: "I have conflict", type: "default" }, // Destructive button
-              { text: "I don't have a conflict", type: "destructive" }  // Default button
+              { text: "I have conflict", type: "destructive", id: "conflictPath" }, // Destructive button
+              { text: "☑️ I don't have a conflict", type: "default", id: "noConflictPath" }  // Default button
           ]
       }, async(buttonId) => {
           // Callback function for button actions
-          if (buttonId === "I don't have a conflict") {
+          if (buttonId === "noConflictPath") {
               console.log("OK button clicked");
               await orbitInteraction(button.value)
-          } else if (buttonId === "I have conflict") {
+          } else if (buttonId === "conflictPath") {
               console.log("Cancel button clicked");
           }
       });
