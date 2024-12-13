@@ -68,7 +68,7 @@ function DealPage() {
           message: button.message,
           buttons: [
               { text: "I have conflict", type: "destructive", id: "conflictPath" }, // Destructive button
-              { text: "☑️ I don't have a conflict", type: "default", id: "noConflictPath" }  // Default button
+              { text: "I don't have a conflict", type: "default", id: "noConflictPath" }  // Default button
           ]
       }, async(buttonId) => {
           // Callback function for button actions
