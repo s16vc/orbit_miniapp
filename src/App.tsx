@@ -141,14 +141,15 @@ function App(props: any) {
   const navigate = useNavigate(); // Use useNavigate hook
 
   const setAsViewed = async(userId: any, dealname: any) => {
-    setViewedDeals([...viewedDeals, dealname])
+    setViewedDeals([...viewedDeals, {dealname: dealname, subscribed: false}])
     // record the viewed deal
     const url = `https://eoh217vgfitqmyc.m.pipedream.net`;
   
     try {
         const payload = {
           userId: userId,
-          deal: dealname
+          deal: dealname,
+          subscribed: false
         }
         await axios.post(url, payload);
     } catch (error: any) {
@@ -162,12 +163,13 @@ function App(props: any) {
     event.preventDefault();
     posthog?.capture('deal_clicked', clickData)
     const deal = clickData.deal;
+    const subscribed = true;
     if (deal) {
       // set as viewed in the database
       if (user.id) {
         setAsViewed(user.id, deal.name);
       }
-      navigate('/deal', { state: { deal, user } }); // Navigate to the new page with deal data
+      navigate('/deal', { state: { deal, user, subscribed } }); // Navigate to the new page with deal data
     }
   }
 
@@ -212,8 +214,10 @@ function App(props: any) {
           }
         })
         console.log(`viewed deals: ${JSON.stringify(r.data)}`)
+        
         if (Array.isArray(r.data)) {
           setViewedDeals(r.data);
+          console.log(viewedDeals.filter(deal => deal.subscribed));
         }
       } catch (error: any) {
         console.error('Error fetching data:', error);
@@ -273,8 +277,12 @@ function App(props: any) {
                  <div className='stage-card'>
                    {data[stage].map((deal: any, index: number) => (
                      <>
-                       <div key={index} className='deal-entry' onClick={(event) => handleClick(event, {deal: deal, user: user, timestamp: formattedDate, event: "click", userType: userType}, posthog)}>
-                          <p className={!viewedDeals.includes(deal.name) ? 'newDeal' : 'dealname'}>{deal.name}</p>
+                       <div key={index} className='deal-entry' onClick={(event) => handleClick(event, {deal: deal, user: user, timestamp: formattedDate, event: "click", userType: userType, subscribed: true}, posthog)}>
+                          <div className='deal-entry-name'>
+                            <p className={!viewedDeals.map(deal => deal.dealname).includes(deal.name) ? 'newDeal' : 'dealname'}>{deal.name}</p>
+                            <p className='subscribe-tag'>{viewedDeals.filter(deal => deal.subscribed).map(deal => deal.dealname.trim()).includes(deal.name.trim()) ? '🔔': ''}</p>
+                          </div>
+                          
                           <div className='sector-tags'>
                             {deal.sectors.map((sector: any) => (
                               <p className='sector' style={{background: getColor(sector)}}>{sector}</p>

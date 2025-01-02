@@ -135,6 +135,10 @@
   padding: 4px 0px;
 }
 
+.clicked {
+  background: "yellow" !important;
+}
+
 .btn-container {
   display: flex;
   flex-direction: column;

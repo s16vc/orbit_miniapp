@@ -10,8 +10,10 @@ function DealPage() {
   const location = useLocation();
   const deal = location.state?.deal; // Access the transferred data
   const user = location.state?.user; // Access the transferred data
+  const subscribed = location.state?.subscribed; // Access the transferred data
   const posthog = usePostHog();
 
+  console.log(`sub: ${JSON.stringify(location.state)}`)
   console.log(user);
   console.log(deal);
 
@@ -59,7 +61,7 @@ function DealPage() {
     }
   }
 
-  async function handleActionClick(event: any, button: any) {
+  async function handleActionClick(event: any, button: any, clickData: any) {
     console.log(event)
     console.log('Button clicked with data:', button);
     if (button.label === "Subscribe") {
@@ -74,6 +76,19 @@ function DealPage() {
           // Callback function for button actions
           if (buttonId === "noConflictPath") {
               console.log("OK button clicked");
+              const url = `https://eoh217vgfitqmyc.m.pipedream.net`;
+  
+              try {
+                  const payload = {
+                    userId: clickData.userId,
+                    deal: clickData.dealname,
+                    subscribed: true
+                  }
+                  await axios.post(url, payload);
+              } catch (error: any) {
+                  console.error('Error making request:', error.message);
+                  return false;
+              }
               await orbitInteraction(button.value)
           } else if (buttonId === "conflictPath") {
               console.log("Cancel button clicked");
@@ -106,11 +121,13 @@ function DealPage() {
               )}
               {/* href={deal.website.startsWith('http') ? deal.website : `https://${deal.website}`} */}
 
+              {/* display clicked buttons as non clickable */}
               <div className='btn-actions'>
                 {buttonData.map(button => (
                   <button
                     key={button.id}
-                    onClick={(event) => handleActionClick(event, button)}
+                    onClick={(event) => handleActionClick(event, button, {"dealname": deal.name, "userId": user.id})}
+                    className={subscribed && button.id === 4 ? 'clicked': ''}
                   >
                     <div className='btn-container'>
                       <p className='emoji'>{button.emoji}</p>
