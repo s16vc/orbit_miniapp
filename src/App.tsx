@@ -163,7 +163,7 @@ function App(props: any) {
     event.preventDefault();
     posthog?.capture('deal_clicked', clickData)
     const deal = clickData.deal;
-    const subscribed = true;
+    const subscribed = viewedDeals.filter(deal => deal.subscribed).map(deal => deal.dealname.trim()).includes(deal.name.trim());
     if (deal) {
       // set as viewed in the database
       if (user.id) {
@@ -277,7 +277,7 @@ function App(props: any) {
                  <div className='stage-card'>
                    {data[stage].map((deal: any, index: number) => (
                      <>
-                       <div key={index} className='deal-entry' onClick={(event) => handleClick(event, {deal: deal, user: user, timestamp: formattedDate, event: "click", userType: userType, subscribed: true}, posthog)}>
+                       <div key={index} className='deal-entry' onClick={(event) => handleClick(event, {deal: deal, user: user, timestamp: formattedDate, event: "click", userType: userType}, posthog)}>
                           <div className='deal-entry-name'>
                             <p className={!viewedDeals.map(deal => deal.dealname).includes(deal.name) ? 'newDeal' : 'dealname'}>{deal.name}</p>
                             <p className='subscribe-tag'>{viewedDeals.filter(deal => deal.subscribed).map(deal => deal.dealname.trim()).includes(deal.name.trim()) ? '🔔': ''}</p>

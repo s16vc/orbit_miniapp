@@ -74,6 +74,7 @@ function DealPage() {
           ]
       }, async(buttonId) => {
           // Callback function for button actions
+          // need to update the setViewedDeal variable, should pass it as parameter
           if (buttonId === "noConflictPath") {
               console.log("OK button clicked");
               const url = `https://eoh217vgfitqmyc.m.pipedream.net`;
