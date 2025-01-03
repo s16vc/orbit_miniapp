@@ -4,14 +4,18 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { usePostHog } from 'posthog-js/react';
 import WebApp from '@twa-dev/sdk'
 import arrow from '../assets/arrow-left.svg'
+import { useDispatch, useSelector } from 'react-redux';
+import { updateViewedDeal } from '../redux/action';
 
 
 function DealPage() {
+  const dispatch = useDispatch();
   const location = useLocation();
   const deal = location.state?.deal; // Access the transferred data
   const user = location.state?.user; // Access the transferred data
-  const subscribed = location.state?.subscribed; // Access the transferred data
   const posthog = usePostHog();
+  const viewedDeals = useSelector((state: any) => state.viewedDeals);
+  const isDealSubscribed = viewedDeals.filter(deal => deal.subscribed).map(deal => deal.dealname.trim()).includes(deal.name.trim());
 
   console.log(`sub: ${JSON.stringify(location.state)}`)
   console.log(user);
@@ -64,6 +68,7 @@ function DealPage() {
   async function handleActionClick(event: any, button: any, clickData: any) {
     console.log(event)
     console.log('Button clicked with data:', button);
+    
     if (button.label === "Subscribe") {
       WebApp.showPopup({
           title: "Be honest",
@@ -90,6 +95,7 @@ function DealPage() {
                   console.error('Error making request:', error.message);
                   return false;
               }
+              dispatch(updateViewedDeal(deal.name));
               await orbitInteraction(button.value)
           } else if (buttonId === "conflictPath") {
               console.log("Cancel button clicked");
@@ -128,7 +134,7 @@ function DealPage() {
                   <button
                     key={button.id}
                     onClick={(event) => handleActionClick(event, button, {"dealname": deal.name, "userId": user.id})}
-                    className={subscribed && button.id === 4 ? 'clicked': ''}
+                    className={isDealSubscribed && button.id === 4 ? 'clicked': ''}
                   >
                     <div className='btn-container'>
                       <p className='emoji'>{button.emoji}</p>

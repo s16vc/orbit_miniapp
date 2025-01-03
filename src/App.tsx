@@ -4,6 +4,7 @@ import './App.css'
 import { InfinitySpin } from 'react-loader-spinner';
 import { usePostHog } from 'posthog-js/react'
 import { Route, Routes, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 // access is restricted to orbit channel members only
 
@@ -11,6 +12,7 @@ import DealPage from './components/DealPage';
 
 interface DataDict { [key: string]: any[] };
 import axios from 'axios';
+import { addViewedDeal, setViewedDeals } from './redux/action';
 
 const botToken = '6644795511:AAF94mSfaDNi1otHwwBzt_LsnlV0xhJdIrw';
 const chatId = '-1002142817225'; // or use chat ID if available
@@ -107,9 +109,11 @@ const getColor = (sector: string) => {
 }
 
 function App(props: any) {
+  const dispatch = useDispatch();
+
   const [data, setData] = useState<DataDict>({});
   const [loading, setLoading] = useState(false);
-  const [viewedDeals, setViewedDeals] = useState<any[]>([]);
+  const viewedDeals = useSelector((state: any) => state.viewedDeals);
   const [auth, setAuth] = useState<boolean | null>(null);
   let user = props.data.user;
   if (process.env.NODE_ENV === 'development') {
@@ -141,7 +145,7 @@ function App(props: any) {
   const navigate = useNavigate(); // Use useNavigate hook
 
   const setAsViewed = async(userId: any, dealname: any) => {
-    setViewedDeals([...viewedDeals, {dealname: dealname, subscribed: false}])
+    dispatch(addViewedDeal(dealname)); // Dispatch action to add viewed deal
     // record the viewed deal
     const url = `https://eoh217vgfitqmyc.m.pipedream.net`;
   
@@ -216,7 +220,7 @@ function App(props: any) {
         console.log(`viewed deals: ${JSON.stringify(r.data)}`)
         
         if (Array.isArray(r.data)) {
-          setViewedDeals(r.data);
+          dispatch(setViewedDeals(r.data));
           console.log(viewedDeals.filter(deal => deal.subscribed));
         }
       } catch (error: any) {

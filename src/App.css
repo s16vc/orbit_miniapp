@@ -125,6 +125,13 @@
   width: 100%;
 }
 
+.btn-actions button.clicked {
+  opacity: 0.6;
+  cursor: not-allowed;
+  color: black; /* Optional: Change text color for better visibility */
+}
+
+/* Default button styles */
 .btn-actions button {
   width: 25%;
   display: flex;
@@ -133,10 +140,6 @@
   font-size: 1.5em;
   background: var(--bg-color);
   padding: 4px 0px;
-}
-
-.clicked {
-  background: "yellow" !important;
 }
 
 .btn-container {
