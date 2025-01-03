@@ -167,7 +167,7 @@ function App(props: any) {
     event.preventDefault();
     posthog?.capture('deal_clicked', clickData)
     const deal = clickData.deal;
-    const subscribed = viewedDeals.filter(deal => deal.subscribed).map(deal => deal.dealname.trim()).includes(deal.name.trim());
+    const subscribed = viewedDeals.filter((deal: any) => deal.subscribed).map((deal: any) => deal.dealname.trim()).includes(deal.name.trim());
     if (deal) {
       // set as viewed in the database
       if (user.id) {
@@ -221,7 +221,6 @@ function App(props: any) {
         
         if (Array.isArray(r.data)) {
           dispatch(setViewedDeals(r.data));
-          console.log(viewedDeals.filter(deal => deal.subscribed));
         }
       } catch (error: any) {
         console.error('Error fetching data:', error);
@@ -283,8 +282,8 @@ function App(props: any) {
                      <>
                        <div key={index} className='deal-entry' onClick={(event) => handleClick(event, {deal: deal, user: user, timestamp: formattedDate, event: "click", userType: userType}, posthog)}>
                           <div className='deal-entry-name'>
-                            <p className={!viewedDeals.map(deal => deal.dealname).includes(deal.name) ? 'newDeal' : 'dealname'}>{deal.name}</p>
-                            <p className='subscribe-tag'>{viewedDeals.filter(deal => deal.subscribed).map(deal => deal.dealname.trim()).includes(deal.name.trim()) ? '🔔': ''}</p>
+                            <p className={!viewedDeals.map((deal: any) => deal.dealname).includes(deal.name) ? 'newDeal' : 'dealname'}>{deal.name}</p>
+                            <p className='subscribe-tag'>{viewedDeals.filter((deal: any) => deal.subscribed).map((deal: any) => deal.dealname.trim()).includes(deal.name.trim()) ? '🔔': ''}</p>
                           </div>
                           
                           <div className='sector-tags'>

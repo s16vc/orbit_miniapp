@@ -15,7 +15,7 @@ function DealPage() {
   const user = location.state?.user; // Access the transferred data
   const posthog = usePostHog();
   const viewedDeals = useSelector((state: any) => state.viewedDeals);
-  const isDealSubscribed = viewedDeals.filter(deal => deal.subscribed).map(deal => deal.dealname.trim()).includes(deal.name.trim());
+  const isDealSubscribed = viewedDeals.filter((deal: any) => deal.subscribed).map((deal: any) => deal.dealname.trim()).includes(deal.name.trim());
 
   console.log(`sub: ${JSON.stringify(location.state)}`)
   console.log(user);
