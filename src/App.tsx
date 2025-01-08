@@ -145,7 +145,9 @@ function App(props: any) {
   const navigate = useNavigate(); // Use useNavigate hook
 
   const setAsViewed = async(userId: any, dealname: any) => {
-    dispatch(addViewedDeal(dealname)); // Dispatch action to add viewed deal
+    if(!viewedDeals.map((deal: any) => deal.dealname).includes(dealname)) {
+      dispatch(addViewedDeal(dealname)); // Dispatch action to add viewed deal
+    }
     // record the viewed deal
     const url = `https://eoh217vgfitqmyc.m.pipedream.net`;
   
@@ -153,7 +155,12 @@ function App(props: any) {
         const payload = {
           userId: userId,
           deal: dealname,
-          subscribed: false
+          state: {
+            alert: false,
+            help: false,
+            info: false,
+            call: false
+          }
         }
         await axios.post(url, payload);
     } catch (error: any) {

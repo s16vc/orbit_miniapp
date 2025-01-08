@@ -81,28 +81,42 @@ function DealPage() {
           // need to update the setViewedDeal variable, should pass it as parameter
           if (buttonId === "noConflictPath") {
               console.log("OK button clicked");
+              dispatch(updateViewedDeal(deal.name, button.type, true));
               const url = `https://eoh217vgfitqmyc.m.pipedream.net`;
-  
               try {
                   const payload = {
                     userId: clickData.userId,
                     deal: clickData.dealname,
-                    subscribed: true
+                    state: viewedDeals.find((dealview: any) => dealview === clickData.dealname)
                   }
                   await axios.post(url, payload);
               } catch (error: any) {
                   console.error('Error making request:', error.message);
                   return false;
               }
-              dispatch(updateViewedDeal(deal.name, button.type, true));
               await orbitInteraction(button.value)
           } else if (buttonId === "conflictPath") {
               console.log("Cancel button clicked");
           }
       });
     } else {
-      WebApp.showAlert(button.message);
+      // WebApp.showAlert(button.message);
+      // please improve api redux interaction
       dispatch(updateViewedDeal(deal.name, button.type, true));
+      const url = `https://eoh217vgfitqmyc.m.pipedream.net`;
+      try {
+        const payload = {
+          userId: clickData.userId,
+          deal: clickData.dealname,
+          state: viewedDeals.find((dealview: any) => dealview.dealname === clickData.dealname)
+        }
+        await axios.post(url, payload);
+      } catch (error: any) {
+        console.error('Error making request:', error.message);
+        return false;
+      }
+      console.log("viewed deals")
+      console.log(viewedDeals)
       orbitInteraction(button.value)
     }
     
@@ -134,7 +148,7 @@ function DealPage() {
                   <button
                     key={button.id}
                     onClick={(event) => handleActionClick(event, button, {"dealname": deal.name, "userId": user.id})}
-                    className={viewedDeals.filter((dealview: any) => dealview.dealname === deal.name)[button.type] ? 'clicked': ''}
+                    className={viewedDeals.find((dealview: any) => dealview.dealname === deal.name)[button.type] ? 'clicked': ''}
                   >
                     <div className='btn-container'>
                       <p className='emoji'>{button.emoji}</p>
