@@ -100,7 +100,7 @@ function DealPage() {
           }
       });
     } else {
-      // WebApp.showAlert(button.message);
+      WebApp.showAlert(button.message);
       // please improve api redux interaction
       dispatch(updateViewedDeal(deal.name, button.type, true));
       const url = `https://eoh217vgfitqmyc.m.pipedream.net`;
