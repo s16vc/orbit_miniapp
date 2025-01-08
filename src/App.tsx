@@ -283,7 +283,7 @@ function App(props: any) {
                        <div key={index} className='deal-entry' onClick={(event) => handleClick(event, {deal: deal, user: user, timestamp: formattedDate, event: "click", userType: userType}, posthog)}>
                           <div className='deal-entry-name'>
                             <p className={!viewedDeals.map((deal: any) => deal.dealname).includes(deal.name) ? 'newDeal' : 'dealname'}>{deal.name}</p>
-                            <p className='subscribe-tag'>{viewedDeals.filter((deal: any) => deal.subscribed).map((deal: any) => deal.dealname.trim()).includes(deal.name.trim()) ? '🔔': ''}</p>
+                            <p className='subscribe-tag'>{viewedDeals.filter((deal: any) => deal.alert).map((deal: any) => deal.dealname.trim()).includes(deal.name.trim()) ? '🔔': ''}</p>
                           </div>
                           
                           <div className='sector-tags'>

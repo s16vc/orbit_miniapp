@@ -15,7 +15,7 @@ const viewedDealsReducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 viewedDeals: state.viewedDeals.map((deal: any) =>
-                    deal.dealname === action.payload ? { ...deal, subscribed: true } : deal
+                    deal.dealname === action.payload.dealname ? { ...deal, [action.payload.type]: action.payload.value } : deal
                 ),
             };
         case SET_VIEWED_DEALS: // Handle the new action

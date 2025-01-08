@@ -15,7 +15,6 @@ function DealPage() {
   const user = location.state?.user; // Access the transferred data
   const posthog = usePostHog();
   const viewedDeals = useSelector((state: any) => state.viewedDeals);
-  const isDealSubscribed = viewedDeals.filter((deal: any) => deal.subscribed).map((deal: any) => deal.dealname.trim()).includes(deal.name.trim());
 
   console.log(`sub: ${JSON.stringify(location.state)}`)
   console.log(user);
@@ -95,7 +94,7 @@ function DealPage() {
                   console.error('Error making request:', error.message);
                   return false;
               }
-              dispatch(updateViewedDeal(deal.name));
+              dispatch(updateViewedDeal(deal.name, button.type, true));
               await orbitInteraction(button.value)
           } else if (buttonId === "conflictPath") {
               console.log("Cancel button clicked");
@@ -103,6 +102,7 @@ function DealPage() {
       });
     } else {
       WebApp.showAlert(button.message);
+      dispatch(updateViewedDeal(deal.name, button.type, true));
       orbitInteraction(button.value)
     }
     
@@ -110,10 +110,10 @@ function DealPage() {
   }
 
   const buttonData = [
-    { id: 1, value: `CommunityRequestInfo_${deal.atid}`, emoji: '🙋‍♂️', message: 'Request received! You will receive the data shortly.', label: 'Request a deck'},
-    { id: 2, value: `CommunityCanHelp_${deal.atid}`, emoji: 'ℹ️', message: 'Thank for your offer to help! We have notified the deal captain.', label: 'Share info'},
-    { id: 3, value: `CommunityRequestCall_${deal.atid}`, emoji: '☎️', message: 'Request received! The deal captain has been notified.', label: 'Join a call'},
-    { id: 4, value: `CommunitySetAlert_${deal.atid}`, emoji: '🔔', message: "It would be unethical to share updates if you're involved with a competitor. Please confirm you're not conflicted. \n\nP.S. Want to connect with the founder? Ask us for an intro, even if you know them, unless you're already in touch.", label: 'Subscribe'}
+    { id: 1, value: `CommunityRequestInfo_${deal.atid}`, emoji: '🙋‍♂️', message: 'Request received! You will receive the data shortly.', label: 'Request a deck', type: "info"},
+    { id: 2, value: `CommunityCanHelp_${deal.atid}`, emoji: 'ℹ️', message: 'Thank for your offer to help! We have notified the deal captain.', label: 'Share info', type: "help"},
+    { id: 3, value: `CommunityRequestCall_${deal.atid}`, emoji: '☎️', message: 'Request received! The deal captain has been notified.', label: 'Join a call', type: "call"},
+    { id: 4, value: `CommunitySetAlert_${deal.atid}`, emoji: '🔔', message: "It would be unethical to share updates if you're involved with a competitor. Please confirm you're not conflicted. \n\nP.S. Want to connect with the founder? Ask us for an intro, even if you know them, unless you're already in touch.", label: 'Subscribe', type: "alert"}
   ];
 
   return (
@@ -134,7 +134,7 @@ function DealPage() {
                   <button
                     key={button.id}
                     onClick={(event) => handleActionClick(event, button, {"dealname": deal.name, "userId": user.id})}
-                    className={isDealSubscribed && button.id === 4 ? 'clicked': ''}
+                    className={viewedDeals.filter((dealview: any) => dealview.dealname === deal.name)[button.type] ? 'clicked': ''}
                   >
                     <div className='btn-container'>
                       <p className='emoji'>{button.emoji}</p>
