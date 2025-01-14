@@ -142,13 +142,15 @@ function DealPage() {
               )}
               {/* href={deal.website.startsWith('http') ? deal.website : `https://${deal.website}`} */}
 
-              {/* display clicked buttons as non clickable */}
               <div className='btn-actions'>
-                {buttonData.map(button => (
+                {buttonData.map(button => {
+                  const isClicked = viewedDeals.find((dealview: any) => dealview.dealname === deal.name)[button.type];
+                  return (
                   <button
                     key={button.id}
                     onClick={(event) => handleActionClick(event, button, {"dealname": deal.name, "userId": user.id})}
-                    className={viewedDeals.find((dealview: any) => dealview.dealname === deal.name)[button.type] ? 'clicked': ''}
+                    className={isClicked ? 'clicked': ''}
+                    disabled={isClicked}
                   >
                     <div className='btn-container'>
                       <p className='emoji'>{button.emoji}</p>
@@ -156,7 +158,9 @@ function DealPage() {
                     </div>
                     
                   </button>
-                ))}
+                  );
+                })
+                }
               </div>
           </div>
 
