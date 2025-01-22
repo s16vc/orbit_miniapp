@@ -15,6 +15,7 @@ function DealPage() {
   const user = location.state?.user; // Access the transferred data
   const posthog = usePostHog();
   const viewedDeals = useSelector((state: any) => state.viewedDeals);
+  const isProd = (process.env.NODE_ENV !== 'development')
 
   console.log(`sub: ${JSON.stringify(location.state)}`)
   console.log(user);
@@ -81,43 +82,49 @@ function DealPage() {
           // need to update the setViewedDeal variable, should pass it as parameter
           if (buttonId === "noConflictPath") {
               console.log("OK button clicked");
-              dispatch(updateViewedDeal(deal.name, button.type, true));
               const url = `https://eoh217vgfitqmyc.m.pipedream.net`;
               try {
                   const payload = {
                     userId: clickData.userId,
                     deal: clickData.dealname,
-                    state: viewedDeals.find((dealview: any) => dealview === clickData.dealname)
+                    state: {...viewedDeals.find((deal: any) => deal.dealname === clickData.dealname), [button.type]: true}
                   }
-                  await axios.post(url, payload);
+                  const response = await axios.post(url, payload);
+                  const newState = response.data;
+                  dispatch(updateViewedDeal(deal.name, newState));
               } catch (error: any) {
                   console.error('Error making request:', error.message);
                   return false;
               }
-              await orbitInteraction(button.value)
+              if (isProd) await orbitInteraction(button.value)
           } else if (buttonId === "conflictPath") {
               console.log("Cancel button clicked");
           }
       });
     } else {
-      WebApp.showAlert(button.message);
+      if (isProd) WebApp.showAlert(button.message);
+
+      console.log(`button ${button.type} clicked`)
       // please improve api redux interaction
-      dispatch(updateViewedDeal(deal.name, button.type, true));
+      console.log("viewed deals")
+      console.log(viewedDeals)
       const url = `https://eoh217vgfitqmyc.m.pipedream.net`;
       try {
         const payload = {
           userId: clickData.userId,
           deal: clickData.dealname,
-          state: viewedDeals.find((dealview: any) => dealview.dealname === clickData.dealname)
+          state: {...viewedDeals.find((deal: any) => deal.dealname === clickData.dealname), [button.type]: true}
         }
-        await axios.post(url, payload);
+        const response = await axios.post(url, payload);
+        const newState = response.data;
+        console.log(`state before dispatch: ${JSON.stringify(newState)}`)
+        dispatch(updateViewedDeal(deal.name, newState));
+        console.log(`state after dispatch: ${JSON.stringify(viewedDeals)}`)
       } catch (error: any) {
         console.error('Error making request:', error.message);
         return false;
       }
-      console.log("viewed deals")
-      console.log(viewedDeals)
-      orbitInteraction(button.value)
+      if (isProd) orbitInteraction(button.value)
     }
     
     // in case button is subscribe check for approval

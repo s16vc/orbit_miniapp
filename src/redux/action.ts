@@ -7,9 +7,9 @@ export const addViewedDeal = (dealname: string) => ({
     payload: { dealname, alert: false, call: false, help: false, info: false },
 });
 
-export const updateViewedDeal = (dealname: string, type: string, value: boolean) => ({
+export const updateViewedDeal = (dealname: string, state: any) => ({
     type: UPDATE_VIEWED_DEAL,
-    payload: {dealname, type, value},
+    payload: {state, dealname},
 });
 
 export const setViewedDeals = (deals: any[]) => ({
