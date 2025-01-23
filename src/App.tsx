@@ -145,9 +145,7 @@ function App(props: any) {
   const navigate = useNavigate(); // Use useNavigate hook
 
   const setAsViewed = async(userId: any, dealname: any) => {
-    if(!viewedDeals.map((deal: any) => deal.dealname).includes(dealname)) {
-      dispatch(addViewedDeal(dealname)); // Dispatch action to add viewed deal
-    }
+    dispatch(addViewedDeal(dealname)); // Dispatch action to add viewed deal
     // record the viewed deal
     const url = `https://eoh217vgfitqmyc.m.pipedream.net`;
   
@@ -175,9 +173,10 @@ function App(props: any) {
     posthog?.capture('deal_clicked', clickData)
     const deal = clickData.deal;
     const subscribed = viewedDeals.filter((deal: any) => deal.subscribed).map((deal: any) => deal.dealname.trim()).includes(deal.name.trim());
+    const dealViewed = viewedDeals.find((deal: any) => deal.dealname === clickData.dealname)
     if (deal) {
       // set as viewed in the database
-      if (user.id) {
+      if (user.id && !dealViewed) {
         setAsViewed(user.id, deal.name);
       }
       navigate('/deal', { state: { deal, user, subscribed } }); // Navigate to the new page with deal data
