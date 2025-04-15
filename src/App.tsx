@@ -5,7 +5,7 @@ import { usePostHog } from 'posthog-js/react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { addViewedDeal, setViewedDeals } from './redux/action';
-import { Avatar, Badge, Button, Cell, LargeTitle, List, Modal, Spinner, Caption } from '@telegram-apps/telegram-ui';
+import { Avatar, Button, Cell, LargeTitle, List, Modal, Spinner, Caption } from '@telegram-apps/telegram-ui';
 import { ModalHeader } from '@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader';
 import { ModalClose } from '@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalClose/ModalClose';
 import DealPage from './components/DealPage';
