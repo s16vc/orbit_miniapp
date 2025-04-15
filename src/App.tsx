@@ -230,12 +230,10 @@ function App(props: any) {
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            padding: '16px 0',
-            borderBottom: '1px solid var(--tg-theme-hint-color)'
           }}>
             <img src={s16vcLogo} alt="Fund Logo" style={{ width: '92px', margin: "auto" }} />
             <LargeTitle
-            weight="2"
+            weight="1"
             style={{ display: loading ? 'block' : 'none' }}
             >
             Welcome, {user.first_name}!
