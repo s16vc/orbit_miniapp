@@ -339,7 +339,6 @@ function App(props: any) {
               </ModalClose>
               }
             >
-              Only iOS header
             </ModalHeader>
             }
             trigger={
