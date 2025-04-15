@@ -60,4 +60,5 @@ body {
 
 .app {
   height: 100vh; /* full viewport height */
+  width: 100%;;
 }
