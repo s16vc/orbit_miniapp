@@ -1,0 +1,251 @@
+:root {
+    --tg-theme-accent-color: #00bfa5;
+   --tg-theme-bg-color: #121212; /* Dark background */
+   --tg-theme-text-color: #e0e0e0; /* Light text for readability */
+   --tg-theme-button-color: #1e88e5; /* Blue button */
+   --tg-theme-button-text-color: #ffffff; /* White button text */
+   --tg-theme-hint-color: #b0bec5; /* Subtle hint color */
+   --tg-theme-link-color: #64b5f6; /* Light blue for links */
+   --tg-theme-secondary-bg-color: #1e1e1e; /* Slightly lighter dark background */
+   --tg-theme-header-bg-color: #212121; /* Dark header background */
+   --tg-theme-accent-text-color: #00e676; /* Green accent text */
+   --tg-theme-section-bg-color: #1c1c1c; /* Section background */
+   --tg-theme-section-header-text-color: #bdbdbd; /* Light gray for section headers */
+   --tg-theme-subtitle-text-color: #9e9e9e; /* Gray for subtitles */
+   --tg-theme-destructive-text-color: #e53935; /* Red for destructive actions */
+   --tg-theme-divider: rgba(255, 255, 255, 0.12); /* Subtle divider */
+   --tg-theme-outline: rgba(255, 255, 255, 0.05); /* Subtle outline */
+   --tg-theme-skeleton: rgba(255, 255, 255, 0.03); /* Skeleton loading */
+   --tg-theme-surface-primary: #1e1e1e; /* Primary surface */
+   --tg-theme-tertiary-bg-color: #2c2c2c; /* Tertiary background */
+   --tg-theme-quartenary-bg-color: #333333; /* Quaternary background */
+   --tg-theme-segmented-control-active-bg: #424242; /* Active segmented control */
+   --tg-theme-card-bg-color: #1e1e1e; /* Card background */
+   --tg-theme-secondary-hint-color: #a2acb0; /* Secondary hint */
+   --tg-theme-secondary-fill: rgba(67, 120, 255, 0.1); /* Secondary fill */
+   --tg-theme-green: #31d158; /* Green */
+   --tg-theme-destructive-background: #e53935; /* Destructive background */
+   --tg-theme-primary-code-highlight: #4378ff; /* Primary code highlight */
+   --tg-theme-secondary-code-highlight: #b00fb4; /* Secondary code highlight */
+   --tg-theme-tertiary-code-highlight: #3a9f20; /* Tertiary code highlight */
+   --tg-theme-plain-background: rgba(255, 255, 255, 0.04); /* Plain background */
+   --tg-theme-plain-foreground: rgba(255, 255, 255, 0.8); /* Plain foreground */
+   --tg-theme-toast-accent-color: #55a6ff; /* Toast accent */
+   --tg-theme-surface-dark: rgba(56, 56, 56, 0.85); /* Dark surface */
+   --tooltip-background-dark: rgba(0, 0, 0, 0.85); /* Tooltip background */
+   --tg-theme-white: #ffffff; /* White */
+   --tg-theme-black: #000000; /* Black */
+   }
+
+   :root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+  
+    --font-color: white;
+    --accent-color: #808080;
+    --bg-color: #D9D9D930;
+    --main-bg-color: black;
+  
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+  }
+  
+  html, body, .dealPage {
+    margin: 0;
+    padding: 0;
+    background: black !important;
+    color: white;
+    height: 100%;
+    width: 100%;
+    place-items: center;
+    overflow: auto;
+  }
+  
+  .stage-card {
+    color: white;
+  }
+  
+  p, h1, SectionHeader, Caption {
+    color: white;
+  }
+  
+  .loading-animation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+  }
+  
+  .custom-cell:hover {
+    background-color: #dddcdc !important; /* Change to a softer color */
+    transition: background-color 0.3s ease-in-out; /* Smooth effect */
+    color: black;
+  }
+  
+  .custom-cell {
+    background-color: #141414 !important;
+  }
+  
+  .custom-list {
+    border-radius: 10px; /* Round the corners of the list */
+    overflow: hidden; /* Ensures child items respect border-radius */
+    color: white;
+    gap: 0px;
+  }
+  
+  .solid {
+    height: 0px;
+  }
+  
+  .modal-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.8) !important; /* Optional: Add a semi-transparent background */
+    overflow: hidden; /* Prevent scrolling inside the modal */
+  }
+  
+  /* Deal page */
+  
+  /* General styles for the DealPage */
+  .dealPage {
+    color: #ffffff; /* Light text */
+    width: 100%;
+    height: 100%;
+  }
+  
+  .link-deal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+  }
+  
+  /* Card styles */
+  .deal-card {
+    background-color: #1e1e1e !important; /* Dark background for the card */
+    color: #ffffff; /* White text for readability */
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Chip styles */
+  .deal-chip {
+    background-color: #333333 !important; /* Darker chip background */
+    color: #ffffff; /* White text */
+    margin-bottom: 16px;
+    padding: 8px 12px;
+    border-radius: 16px;
+    font-size: 0.9rem;
+  }
+  
+  /* Logo styles */
+  .deal-logo {
+    display: block;
+    width: 84px;
+    object-fit: cover;
+    margin-bottom: 16px;
+    margin: auto
+  }
+  
+  /* Deal name and captain styles */
+  .deal-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black; /* White text */
+  }
+  
+  .deal-name-subtitle {
+    font-size: 1rem;
+    color: darkgray; /* Light gray for subtitles */
+    margin-bottom: 16px;
+  }
+  
+  /* Section title styles */
+  .deal-section-title {
+    font-weight: bold;
+    color: black; /* White text */
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+  }
+  
+  /* Section content styles */
+  .deal-section-content {
+    color: #cccccc; /* Light gray text for content */
+    margin-bottom: 16px;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  /* Founders list styles */
+  .deal-founders-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .deal-founders-list-item {
+    color: #cccccc; /* Light gray text */
+    margin-bottom: 8px;
+    font-size: 1rem;
+  }
+  
+  /* Visit Source button styles */
+  .visit-source-button {
+    background-color: #0088cc; /* Blue button for contrast */
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .visit-source-button:hover {
+    background-color: #005f99; /* Darker blue on hover */
+  }
+  
+  .visit-source-button:active {
+    background-color: #004f80; /* Even darker blue on click */
+  }
+  
+  /* Custom cell styles */
+  .custom-cell {
+    background-color: #1e1e1e !important; /* Dark background for cells */
+    color: #ffffff !important; /* White text for readability */
+    padding: 12px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .custom-cell:hover {
+    background-color: #333333 !important; /* Slightly lighter on hover */
+    color: #ffffff !important; /* Keep text white */
+  }
+  
+  /* Custom list styles */
+  .custom-list {
+    border-radius: 10px; /* Round the corners of the list */
+    overflow: hidden; /* Ensures child items respect border-radius */
+    background-color: #1e1e1e; /* Dark background for the list */
+    color: #ffffff; /* White text */
+    gap: 0px;
+  }
+  
+  .card-section {
+    margin-bottom: 8px;
+    background-color: #333333 !important;
+  }
+  
+  .card-section * {
+    background-color: #333333 !important;
+    color: white;
+  }

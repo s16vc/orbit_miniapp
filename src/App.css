@@ -1,198 +1,44 @@
-:root {
-  --font-color: white;
-  --accent-color: #808080;
-  --bg-color: #D9D9D930;
-  --main-bg-color: black;
+body {
+  background-color: black;
 }
 
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+.link-deal {
+  display: flex;
+  flex-direction: column; /* stack image + link vertically */
+  align-items: center; /* center horizontally */
+  justify-content: center; /* center vertically if needed */
   text-align: center;
-}
-
-.dealWebsite {
-  color: #646cff;
-  font-weight: bold;
-}
-
-.deal-page {
-  font-size: 0.9em;
-  color: white;
-  padding: 15px;
-  border-radius: 20px;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  height: 95vh;
-  justify-content: start;
-  line-height: 1.1em;
-}
-
-.denied-section {
-  font-size: 2em;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.denied-message {
-  font-size: 0.8em;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; /* Center the text inside the .denied-message div */
-  text-align: center; /* Optional: Center the text if it's multiline */
-}
-
-.deal-name {
-  font-size: 2em;
-  margin: 20px 0px;
-}
-
-.deal-header {
-  text-align: center;
-  margin: 0px auto;
-  width: 100%;
-}
-
-.denied-message span {
-  font-size: 0.5em;
-  color: red;
-}
-
-.back-btn {
-  width: 30px;
-  color: white;
-}
-
-.separator {
-  width: 95%;
-  height: 1px;
-  background: #343436;
-  margin: 0px auto;
-  padding: 0px !important;
-}
-
-.deal-info {
+  gap: 10px; /* optional spacing between image and link */
+  margin-bottom: 20px;
   margin-top: 20px;
-  padding: 0px;
 }
 
-.deal-info span {
-  color: var(--accent-color);
-  font-weight: bold;
+.link-deal img {
+  width: 120px; /* set a fixed width for the image */
+  height: auto; /* maintain aspect ratio */
+  border-radius: 8px;
 }
 
-.deal-info .info-bg {
-  padding: 5px 10px;
-}
-
-.deal-info .info-rest p {
- padding: 0px 10px;
-}
-
-.deal-info .info-rest {
-  text-align: justify;
-}
-
-.info-bg {
-  background: var(--bg-color);
-  border-radius: 10px;
-}
-
-.scrollable-container {
-  margin-top: 10px;
-  background: var(--bg-color);
-  border-radius: 10px;
-  padding: 10px !important; /* Optional: adds padding inside the container */
-}
-
-.actions-desc {
-  line-height: 1em;
-  width: 80%;
-}
-
-.btn-actions {
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
-  gap: 5px;
+.dealPage {
   width: 100%;
 }
 
-.btn-actions button.clicked {
-  opacity: 0.6;
-  cursor: not-allowed;
-  color: black; /* Optional: Change text color for better visibility */
+.deal-card {
+  width: 100%;
 }
 
-/* Default button styles */
-.btn-actions button {
-  width: 25%;
+.website-deal {
+  text-decoration: none;
+  color: inherit
+}
+
+.loading-animation {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5em;
-  background: var(--bg-color);
-  padding: 4px 0px;
+  height: 100%; /* full viewport height */
 }
 
-.btn-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  items-align: center;
-}
-
-.emoji {
-  font-size: 20px !important;
-  margin: 0px;
-}
-
-.btn-actions button p {
-  color: white;
-  font-size: 8px;
-  font-weight: 200;
-}
-
-.logo {
-  height: 6em;
-  margin-bottom: 10px;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.app {
+  height: 100vh; /* full viewport height */
 }
