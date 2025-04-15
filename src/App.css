@@ -19,6 +19,25 @@ body {
   border-radius: 8px;
 }
 
+.sector-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: right;
+  gap: 8px; /* space between tags */
+  margin-top: 10px; /* space above tags */
+}
+
+.sector-tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--tgui--button_color);
+  padding: 4px 8px;
+  border-radius: 20px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
 .dealPage {
   width: 100%;
 }

@@ -231,7 +231,7 @@ function App(props: any) {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-            <img src={s16vcLogo} alt="Fund Logo" style={{ width: '92px', margin: "auto" }} />
+            <img src={s16vcLogo} alt="Fund Logo" style={{ width: '82px', margin: "auto" }} />
             <LargeTitle
             weight="1"
             style={{ display: loading ? 'block' : 'none' }}
@@ -257,32 +257,36 @@ function App(props: any) {
                         <>
                           <Cell
                             className="custom-cell"
-                            before={<><Avatar src="/techflow-logo.png">
+                            before={<><Avatar src="https://www.proedsolutions.com/wp-content/themes/micron/images/placeholders/placeholder_large_dark.jpg">
                               {viewedDeals
-      .filter(
-        (deal: any) => deal.alert
-      )
-      .map(
-        (deal: any) =>
-          deal.dealname.trim()
-      )
-      .includes(deal.name.trim()) && <AvatarBadge
-    type="number"
-    mode='secondary'
-  >
-    🔔
-  </AvatarBadge>
-                            }
+                              .filter(
+                                (deal: any) => deal.alert
+                              )
+                              .map(
+                                (deal: any) =>
+                                  deal.dealname.trim()
+                              )
+                              .includes(deal.name.trim()) && <AvatarBadge
+                            type="number"
+                            mode='secondary'
+                          >
+                            🔔
+                          </AvatarBadge>
+                        }
   </Avatar></>}
                             after={
                               <div className="sector-tags">
                                 {deal.sectors.map((sector: any) => (
-                                  <Badge
-                                    mode="primary"
-                                    type="number"
+                                  <div
+                                    className="sector-tag"
+                                    key={sector}
                                   >
-                                    {sector}
-                                  </Badge>
+                                    <Caption>
+                                      {sector.length > 10
+                                      ? `${sector.slice(0, 10)}...`
+                                      : sector}
+                                    </Caption>
+                                  </div>
                                 ))}
                               </div>
                             }

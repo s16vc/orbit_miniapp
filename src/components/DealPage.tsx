@@ -1,6 +1,6 @@
 // DealPage.jsx
 // import { usePostHog } from 'posthog-js/react';
-import { Button, Caption, Card, InlineButtons, Text, Title } from '@telegram-apps/telegram-ui';
+import { Badge, Button, Caption, Card, InlineButtons, Text, Title } from '@telegram-apps/telegram-ui';
 import '../App.css';
 import { CardChip } from '@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardChip/CardChip';
 import { CardCell } from '@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardCell/CardCell';
@@ -137,7 +137,7 @@ function DealPage({ dealData }: DealPageProps) {
         {/* Deal logo */}
         <div className='link-deal'>
         <img
-          src={dealData.logo}
+          src={dealData.logo || 'https://www.proedsolutions.com/wp-content/themes/micron/images/placeholders/placeholder_large_dark.jpg'}
           className="deal-logo"
         />
         <Title
@@ -196,6 +196,16 @@ function DealPage({ dealData }: DealPageProps) {
             </Text>
           </CardCell>
         </div>
+
+        <CardCell readOnly subhead='Sectors' className="card-section">
+            {dealData.sectors.map((sector: any) => (
+              <Badge type='number' key={sector}>
+                <Caption>
+                  {sector}
+                </Caption>
+              </Badge>
+            ))}
+        </CardCell>
         
 
         {/* AI Summary */}
