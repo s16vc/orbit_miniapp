@@ -126,7 +126,7 @@ function DealPage({ dealData }: DealPageProps) {
         {/* Chip to highlight the deal */}
         <CardChip readOnly className="deal-chip">
         <Button
-            before={<p>🔕</p>}
+            before={<Text>🔕</Text>}
             mode="plain"
             size="s"
           >
