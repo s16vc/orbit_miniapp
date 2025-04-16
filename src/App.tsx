@@ -257,7 +257,7 @@ function App(props: any) {
                         <>
                           <Cell
                             className="custom-cell"
-                            before={<><Avatar src="https://www.proedsolutions.com/wp-content/themes/micron/images/placeholders/placeholder_large_dark.jpg">
+                            before={<><Avatar src={deal.logo || "https://www.proedsolutions.com/wp-content/themes/micron/images/placeholders/placeholder_large_dark.jpg"}>
                               {viewedDeals
                               .filter(
                                 (deal: any) => deal.alert
@@ -364,7 +364,6 @@ function App(props: any) {
     whyWeLikeIt: 'Innovative use of AI and a strong founding team.',
   }}
 /> */}
-            {/* <h1>Hello this is a test</h1> */}
           </Modal>
           )}
         </div>
