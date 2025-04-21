@@ -29,6 +29,7 @@ function DealPage({ dealData }: DealPageProps) {
     console.log(user)
     const url = `https://eoh217vgfitqmyc.m.pipedream.net`;
     try {
+      WebApp.showAlert("You were unsubscribed from this deal. You will no longer receive updates.");
       const payload = {
       userId: user?.id,
       deal: deal.name,
