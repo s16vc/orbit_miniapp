@@ -11,7 +11,6 @@ import { ModalClose } from '@telegram-apps/telegram-ui/dist/components/Overlays/
 import DealPage from './components/DealPage';
 import { SectionHeader } from '@telegram-apps/telegram-ui/dist/components/Blocks/Section/components/SectionHeader/SectionHeader';
 import { AvatarBadge } from '@telegram-apps/telegram-ui/dist/components/Blocks/Avatar/components/AvatarBadge/AvatarBadge';
-import { userInfo } from 'os';
 
 // Access is restricted to orbit channel members only
 
