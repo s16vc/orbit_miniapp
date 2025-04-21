@@ -22,6 +22,36 @@ function DealPage({ dealData }: DealPageProps) {
   const user = WebApp.initDataUnsafe?.user;
   const viewedDeals = useSelector((state: any) => state.viewedDeals);
 
+  console.log(WebApp.initDataUnsafe)
+
+  async function unsubscribe(event: any, deal: DealData) {
+    console.log(event)
+    console.log(user)
+    const url = `https://eoh217vgfitqmyc.m.pipedream.net`;
+    try {
+      const payload = {
+      userId: user?.id,
+      deal: deal.name,
+      state: {...viewedDeals.find((deal: any) => deal.dealname === dealData.name), "alert": false}
+      };
+      const response = await axios.post(url, payload);
+      const newState = response.data;
+      dispatch(updateViewedDeal(dealData.name, newState));
+
+      // Additional request to remove the user from the subscribe list in the CRM
+      const crmPayload = {
+        atid: dealData.atid,
+        username: user?.username
+      };
+      await axios.post('https://eocrmltsoqtk0l4.m.pipedream.net', crmPayload);
+    } catch (error: any) {
+      console.error('Error making request:', error.message);
+      return false;
+    }
+
+  }
+
+
   async function orbitInteraction(buttonValue: string) {
     try {
       const payload = {
@@ -129,6 +159,7 @@ function DealPage({ dealData }: DealPageProps) {
             before={<Text>🔕</Text>}
             mode="plain"
             size="s"
+            onClick={(event) => unsubscribe(event, dealData)}
           >
             Unsubscribe
         </Button>
@@ -210,18 +241,20 @@ function DealPage({ dealData }: DealPageProps) {
 
         {/* AI Summary */}
         <CardCell readOnly subhead='AI Summary' className='card-section'>
-          <Text className="deal-section-content">{dealData.aiSummary}</Text>
+            <Text className="deal-section-content full-text">
+            {dealData.aiSummary}
+          </Text>
         </CardCell>
 
         { dealData.whyWeLikeIt && dealData.whyWeLikeIt.length > 0 &&
         <CardCell readOnly subhead='Why we like it' className='card-section'>
-          <Text className="deal-section-content">{dealData.whyWeLikeIt}</Text>
+          <Text className="deal-section-content full-text">{dealData.whyWeLikeIt}</Text>
         </CardCell>
         }
 
 { dealData.rejectionComment && dealData.rejectionComment.length > 0 &&
         <CardCell readOnly subhead='Rejection comment' className='card-section'>
-          <Text className="deal-section-content">{dealData.rejectionComment}</Text>
+          <Text className="deal-section-content full-text">{dealData.rejectionComment}</Text>
         </CardCell>
         }
 

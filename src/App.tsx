@@ -11,6 +11,7 @@ import { ModalClose } from '@telegram-apps/telegram-ui/dist/components/Overlays/
 import DealPage from './components/DealPage';
 import { SectionHeader } from '@telegram-apps/telegram-ui/dist/components/Blocks/Section/components/SectionHeader/SectionHeader';
 import { AvatarBadge } from '@telegram-apps/telegram-ui/dist/components/Blocks/Avatar/components/AvatarBadge/AvatarBadge';
+import { userInfo } from 'os';
 
 // Access is restricted to orbit channel members only
 
@@ -78,8 +79,11 @@ function App(props: any) {
       id: 5861198087,
       first_name: 'dev',
       last_name: '',
+      username: 'ishish97'
     };
   }
+
+  console.log(user)
 
   const team = [
     'Isham Le Tenoux',
@@ -132,10 +136,6 @@ function App(props: any) {
     event.preventDefault();
     posthog?.capture('deal_clicked', clickData);
     const deal = clickData.deal;
-    // const subscribed = viewedDeals
-    //   .filter((deal: any) => deal.subscribed)
-    //   .map((deal: any) => deal.dealname.trim())
-    //   .includes(deal.name.trim());
     const dealViewed = viewedDeals.find(
       (deal: any) => deal.dealname === clickData.dealname
     );
