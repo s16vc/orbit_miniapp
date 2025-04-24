@@ -289,7 +289,7 @@ function App(props: any) {
                                 ))}
                               </div>
                             }
-                            subtitle="AI-powered workflow automation platform"
+                            subtitle={deal.aiSummary}
                             onClick={(event: any) =>
                               handleClick(
                                 event,

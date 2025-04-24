@@ -217,10 +217,6 @@ function DealPage({ dealData }: DealPageProps) {
           <Text>{dealData.dealCaptain}</Text>
           </CardCell>
 
-          {/* <CardCell readOnly subhead='Description'>
-            <Text className="deal-section-content">{dealData.description}</Text>
-          </CardCell> */}
-
           {/* Founders */}
           <CardCell readOnly subhead='Founders'>
             <Text className="deal-section-content">
